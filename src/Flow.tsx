@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import ReactFlow, {
   Controls,
   Background,
@@ -33,6 +33,8 @@ const initialEdges: Edge[] = [];
 export const Flow = () => {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const [reactFlowInstance, setReactFlowInstance] = useState(null);
+  const reactFlowWrapper = useRef(null);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
@@ -49,8 +51,41 @@ export const Flow = () => {
     [setEdges]
   );
 
+  const onDragOver = useCallback((event) => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const onDrop = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+      const type = event.dataTransfer.getData("application/reactflow");
+
+      // check if the dropped element is valid
+      if (typeof type === "undefined" || !type) {
+        return;
+      }
+
+      const position = reactFlowInstance.project({
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      });
+      const newNode = {
+        id: getId(),
+        type,
+        position,
+        data: { label: `${type} node` },
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [reactFlowInstance]
+  );
+
   return (
-    <div style={{ height: "100%" }}>
+    <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
         onNodesChange={onNodesChange}
@@ -62,7 +97,7 @@ export const Flow = () => {
         <Controls />
       </ReactFlow>
 
-      <div
+      {/* <div
         onClick={() => {
           onNodesChange([
             {
@@ -78,7 +113,7 @@ export const Flow = () => {
         style={{ position: "absolute", bottom: 0, right: 0 }}
       >
         <button>ADD NODE</button>
-      </div>
+      </div> */}
     </div>
   );
 };
