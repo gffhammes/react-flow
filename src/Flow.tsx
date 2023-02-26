@@ -10,21 +10,42 @@ import ReactFlow, {
   NodeChange,
   EdgeChange,
   Connection,
+  Position,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
+import { CustomNode } from "./CustomNode";
+
+const nodeTypes = {
+  customNode: CustomNode,
+};
+
+export const customNode = "customNode";
+
+export const isValidConnection = (connection: Connection) => {
+  return connection.sourceHandle === connection.targetHandle;
+};
+// export const onConnectStart = (_: any, { nodeId, handleType }: any) =>
+//   console.log("on connect start", { nodeId, handleType });
+// export const onConnectEnd = (event: any) =>
+//   console.log("on connect end", event);
 
 const initialNodes: Node[] = [
   {
     id: uuid(),
     data: { label: "Hello" },
     position: { x: 200, y: 200 },
-    type: "input",
+    targetPosition: Position.Left,
+    sourcePosition: Position.Right,
+    type: customNode,
   },
   {
     id: uuid(),
     data: { label: "World" },
-    position: { x: 400, y: 400 },
+    position: { x: 600, y: 200 },
+    targetPosition: Position.Left,
+    sourcePosition: Position.Right,
+    type: customNode,
   },
 ];
 
@@ -77,6 +98,8 @@ export const Flow = () => {
         type,
         position,
         data: { label: `${type} node` },
+        targetPosition: Position.Left,
+        sourcePosition: Position.Right,
       };
 
       setNodes((nds) => nds.concat(newNode));
@@ -87,6 +110,7 @@ export const Flow = () => {
   return (
     <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
+        nodeTypes={nodeTypes}
         nodes={nodes}
         edges={edges}
         onNodesChange={onNodesChange}
@@ -95,6 +119,8 @@ export const Flow = () => {
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
+        // onConnectStart={onConnectStart}
+        // onConnectEnd={onConnectEnd}
       >
         <Background />
         <Controls />

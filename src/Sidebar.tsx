@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { customNode } from "./Flow";
 
 export const Sidebar = () => {
   const onDragStart = (event: any, nodeType: any) => {
@@ -8,17 +9,8 @@ export const Sidebar = () => {
 
   return (
     <aside>
-      <div className="description">
-        You can drag these nodes to the pane on the right.
-      </div>
-      <div onDragStart={(event) => onDragStart(event, "input")} draggable>
-        Input Node
-      </div>
-      <div onDragStart={(event) => onDragStart(event, "default")} draggable>
-        Default Node
-      </div>
-      <div onDragStart={(event) => onDragStart(event, "output")} draggable>
-        Output Node
+      <div onDragStart={(event) => onDragStart(event, customNode)} draggable>
+        Custom Node
       </div>
     </aside>
   );
