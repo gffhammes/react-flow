@@ -1,17 +1,20 @@
 import "reactflow/dist/style.css";
 import "./App.css";
 import { Flow } from "./Flow";
-import { Nodes } from "./Nodes";
+import { Sidebar } from "./Sidebar";
 import { Stack } from "@mui/material";
+import { ReactFlowProvider } from "reactflow";
 
 function App() {
   return (
     <div style={{ height: "100%" }}>
-      <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
-        <Flow />
+      <ReactFlowProvider>
+        <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
+          <Flow />
 
-        <Nodes />
-      </Stack>
+          <Sidebar />
+        </Stack>
+      </ReactFlowProvider>
     </div>
   );
 }

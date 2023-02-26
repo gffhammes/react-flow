@@ -18,13 +18,13 @@ const initialNodes: Node[] = [
   {
     id: uuid(),
     data: { label: "Hello" },
-    position: { x: 0, y: 0 },
+    position: { x: 200, y: 200 },
     type: "input",
   },
   {
     id: uuid(),
     data: { label: "World" },
-    position: { x: 100, y: 100 },
+    position: { x: 400, y: 400 },
   },
 ];
 
@@ -33,8 +33,8 @@ const initialEdges: Edge[] = [];
 export const Flow = () => {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
-  const [reactFlowInstance, setReactFlowInstance] = useState(null);
-  const reactFlowWrapper = useRef(null);
+  const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
+  const reactFlowWrapper = useRef<any>(null);
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
@@ -51,16 +51,16 @@ export const Flow = () => {
     [setEdges]
   );
 
-  const onDragOver = useCallback((event) => {
+  const onDragOver = useCallback((event: any) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
 
   const onDrop = useCallback(
-    (event) => {
+    (event: any) => {
       event.preventDefault();
 
-      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
+      const reactFlowBounds = reactFlowWrapper.current!.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
 
       // check if the dropped element is valid
@@ -68,12 +68,12 @@ export const Flow = () => {
         return;
       }
 
-      const position = reactFlowInstance.project({
+      const position = reactFlowInstance?.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
       const newNode = {
-        id: getId(),
+        id: uuid(),
         type,
         position,
         data: { label: `${type} node` },
@@ -88,16 +88,20 @@ export const Flow = () => {
     <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
-        onNodesChange={onNodesChange}
         edges={edges}
+        onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
+        onInit={setReactFlowInstance}
+        onDrop={onDrop}
+        onDragOver={onDragOver}
       >
         <Background />
         <Controls />
       </ReactFlow>
 
-      {/* <div
+      {/* 
+      <div
         onClick={() => {
           onNodesChange([
             {
