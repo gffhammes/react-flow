@@ -9,9 +9,26 @@ const green = "#16e70f";
 
 export const CustomNode = memo(({ data, isConnectable }: any) => {
   const teste = (connection: Connection) => {
-    console.log(connection);
+    // console.log(connection);
 
     return isValidConnection(connection);
+  };
+
+  const connectionCommonProps = {
+    height: "1rem",
+    width: "1rem",
+  };
+
+  const leftConnectionCommonProps = {
+    ...connectionCommonProps,
+    left: 0,
+    transform: "translateX(-50%)",
+  };
+
+  const rightConnectionCommonProps = {
+    ...connectionCommonProps,
+    right: 0,
+    transform: "translateX(50%)",
   };
 
   return (
@@ -19,27 +36,34 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
       <Handle
         type="target"
         position={Position.Left}
-        id="a"
-        style={{ background: blue, top: 10 }}
-        onConnect={(params) => console.log("handle onConnect", params)}
+        id={blue}
+        style={{ background: blue, top: 10, ...leftConnectionCommonProps }}
         isConnectable={isConnectable}
         isValidConnection={isValidConnection}
       />
       <Handle
         type="target"
         position={Position.Left}
-        id="b"
-        style={{ background: red }}
-        onConnect={(params) => console.log("handle onConnect", params)}
+        id={red}
+        style={{
+          background: red,
+          ...leftConnectionCommonProps,
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
         isConnectable={isConnectable}
         isValidConnection={isValidConnection}
       />
       <Handle
         type="target"
         position={Position.Left}
-        id="c"
-        style={{ background: green, top: "auto", bottom: 10 }}
-        onConnect={(params) => console.log("handle onConnect", params)}
+        id={green}
+        style={{
+          background: green,
+          top: "auto",
+          bottom: 10,
+          ...leftConnectionCommonProps,
+        }}
         isConnectable={isConnectable}
         isValidConnection={isValidConnection}
       />
@@ -49,24 +73,38 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
       <Handle
         type="source"
         position={Position.Right}
-        id="a"
-        style={{ top: 10, background: blue }}
+        id={blue}
+        style={{
+          top: 10,
+          background: blue,
+          ...rightConnectionCommonProps,
+        }}
         isConnectable={isConnectable}
         isValidConnection={teste}
       />
       <Handle
         type="source"
         position={Position.Right}
-        id="b"
-        style={{ background: red }}
+        id={red}
+        style={{
+          background: red,
+          ...rightConnectionCommonProps,
+          top: "50%",
+          transform: "translate(50%, -50%)",
+        }}
         isConnectable={isConnectable}
         isValidConnection={teste}
       />
       <Handle
         type="source"
         position={Position.Right}
-        id="c"
-        style={{ bottom: 10, top: "auto", background: green }}
+        id={green}
+        style={{
+          bottom: 10,
+          top: "auto",
+          background: green,
+          ...rightConnectionCommonProps,
+        }}
         isConnectable={isConnectable}
         isValidConnection={teste}
       />

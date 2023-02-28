@@ -62,13 +62,28 @@ export const Flow = () => {
       setNodes((nds) => applyNodeChanges(changes, nds)),
     [setNodes]
   );
+
   const onEdgesChange = useCallback(
     (changes: EdgeChange[]) =>
       setEdges((eds) => applyEdgeChanges(changes, eds)),
     [setEdges]
   );
   const onConnect = useCallback(
-    (connection: Connection) => setEdges((eds) => addEdge(connection, eds)),
+    (connection: Connection) => {
+      console.log(connection);
+      setEdges((eds) =>
+        addEdge(
+          {
+            ...connection,
+            style: {
+              strokeWidth: 2,
+              stroke: connection.sourceHandle ?? "",
+            },
+          },
+          eds
+        )
+      );
+    },
     [setEdges]
   );
 
@@ -119,7 +134,7 @@ export const Flow = () => {
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
-        // onConnectStart={onConnectStart}
+        // onConnectStart={(e) => console.log(e)}
         // onConnectEnd={onConnectEnd}
       >
         <Background />

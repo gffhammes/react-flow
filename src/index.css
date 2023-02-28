@@ -69,10 +69,3 @@ button:focus-visible {
 }
 
 
-.validationflow .react-flow__handle-connecting {
-  background: #ff6060;
-}
-
-.validationflow .react-flow__handle-valid {
-  background: #55dd99;
-}
