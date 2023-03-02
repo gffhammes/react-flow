@@ -8,12 +8,6 @@ const red = "#ec0b0b";
 const green = "#16e70f";
 
 export const CustomNode = memo(({ data, isConnectable }: any) => {
-  const teste = (connection: Connection) => {
-    // console.log(connection);
-
-    return isValidConnection(connection);
-  };
-
   const connectionCommonProps = {
     height: "1rem",
     width: "1rem",
@@ -80,7 +74,7 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
           ...rightConnectionCommonProps,
         }}
         isConnectable={isConnectable}
-        isValidConnection={teste}
+        isValidConnection={isValidConnection}
       />
       <Handle
         type="source"
@@ -93,7 +87,7 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
           transform: "translate(50%, -50%)",
         }}
         isConnectable={isConnectable}
-        isValidConnection={teste}
+        isValidConnection={isValidConnection}
       />
       <Handle
         type="source"
@@ -106,7 +100,7 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
           ...rightConnectionCommonProps,
         }}
         isConnectable={isConnectable}
-        isValidConnection={teste}
+        isValidConnection={isValidConnection}
       />
     </>
   );

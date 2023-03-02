@@ -15,77 +15,28 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { CustomNode } from "./CustomNode";
+import { useFlowContext } from "./Flow/context/useFlowContext";
 
 const nodeTypes = {
   customNode: CustomNode,
 };
 
-export const customNode = "customNode";
-
 export const isValidConnection = (connection: Connection) => {
+  console.log(connection);
   return connection.sourceHandle === connection.targetHandle;
 };
-// export const onConnectStart = (_: any, { nodeId, handleType }: any) =>
-//   console.log("on connect start", { nodeId, handleType });
-// export const onConnectEnd = (event: any) =>
-//   console.log("on connect end", event);
-
-const initialNodes: Node[] = [
-  {
-    id: uuid(),
-    data: { label: "Hello" },
-    position: { x: 200, y: 200 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    type: customNode,
-  },
-  {
-    id: uuid(),
-    data: { label: "World" },
-    position: { x: 600, y: 200 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    type: customNode,
-  },
-];
-
-const initialEdges: Edge[] = [];
 
 export const Flow = () => {
-  const [nodes, setNodes] = useState<Node[]>(initialNodes);
-  const [edges, setEdges] = useState<Edge[]>(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
   const reactFlowWrapper = useRef<any>(null);
-
-  const onNodesChange = useCallback(
-    (changes: NodeChange[]) =>
-      setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-
-  const onEdgesChange = useCallback(
-    (changes: EdgeChange[]) =>
-      setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
-  );
-  const onConnect = useCallback(
-    (connection: Connection) => {
-      console.log(connection);
-      setEdges((eds) =>
-        addEdge(
-          {
-            ...connection,
-            style: {
-              strokeWidth: 2,
-              stroke: connection.sourceHandle ?? "",
-            },
-          },
-          eds
-        )
-      );
-    },
-    [setEdges]
-  );
+  const {
+    edges,
+    nodes,
+    onConnect,
+    onEdgesChange,
+    onNodesChange,
+    handleNewNode,
+  } = useFlowContext();
 
   const onDragOver = useCallback((event: any) => {
     event.preventDefault();
@@ -108,6 +59,7 @@ export const Flow = () => {
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
+
       const newNode = {
         id: uuid(),
         type,
@@ -117,7 +69,7 @@ export const Flow = () => {
         sourcePosition: Position.Right,
       };
 
-      setNodes((nds) => nds.concat(newNode));
+      handleNewNode(newNode);
     },
     [reactFlowInstance]
   );
@@ -140,25 +92,6 @@ export const Flow = () => {
         <Background />
         <Controls />
       </ReactFlow>
-
-      {/* 
-      <div
-        onClick={() => {
-          onNodesChange([
-            {
-              type: "add",
-              item: {
-                id: uuid(),
-                data: { label: "World" },
-                position: { x: 100, y: 100 },
-              },
-            },
-          ]);
-        }}
-        style={{ position: "absolute", bottom: 0, right: 0 }}
-      >
-        <button>ADD NODE</button>
-      </div> */}
     </div>
   );
 };

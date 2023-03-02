@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { customNode } from "./Flow";
+import { customNode } from "./Flow/context/FlowContextProvider";
 
 export const Sidebar = () => {
   const onDragStart = (event: any, nodeType: any) => {

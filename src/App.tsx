@@ -3,18 +3,18 @@ import "./App.css";
 import { Flow } from "./Flow";
 import { Sidebar } from "./Sidebar";
 import { Stack } from "@mui/material";
-import { ReactFlowProvider } from "reactflow";
+import { FlowContextProvider } from "./Flow/context/FlowContextProvider";
 
 function App() {
   return (
     <div style={{ height: "100%" }}>
-      <ReactFlowProvider>
+      <FlowContextProvider>
         <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
           <Flow />
 
           <Sidebar />
         </Stack>
-      </ReactFlowProvider>
+      </FlowContextProvider>
     </div>
   );
 }
