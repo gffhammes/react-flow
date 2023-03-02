@@ -1,13 +1,15 @@
 import { memo } from "react";
 import { Connection, Handle, Position } from "reactflow";
 import { Box } from "@mui/material";
-import { isValidConnection } from "./Flow";
+import { useFlowContext } from "./Flow/context/useFlowContext";
 
 const blue = "#1900ff";
 const red = "#ec0b0b";
 const green = "#16e70f";
 
 export const CustomNode = memo(({ data, isConnectable }: any) => {
+  const { isValidConnection } = useFlowContext();
+
   const connectionCommonProps = {
     height: "1rem",
     width: "1rem",

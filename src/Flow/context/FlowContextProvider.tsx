@@ -79,6 +79,31 @@ export const FlowContextProvider = ({
     setNodes((nodes) => nodes.concat(newNode));
   };
 
+  const isValidConnection = (connection: Connection) => {
+    // console.log({ connection, edges });
+
+    const sourceNode = connection.source;
+    const targetNode = connection.target;
+
+    const { sourceHandle, targetHandle } = connection;
+
+    const getEdgeAlreadyHasConnection = () => {
+      const hasSameTarget = !!edges.find(
+        (edge) =>
+          edge.targetHandle === targetHandle && edge.target === targetNode
+      );
+
+      return hasSameTarget;
+    };
+
+    const edgeAlreadyHasConnection = getEdgeAlreadyHasConnection();
+
+    return (
+      connection.sourceHandle === connection.targetHandle &&
+      !edgeAlreadyHasConnection
+    );
+  };
+
   const value: IFlowContextValue = {
     nodes,
     edges,
@@ -86,6 +111,7 @@ export const FlowContextProvider = ({
     onEdgesChange,
     onConnect,
     handleNewNode,
+    isValidConnection,
   };
 
   return (

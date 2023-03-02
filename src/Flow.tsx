@@ -21,11 +21,6 @@ const nodeTypes = {
   customNode: CustomNode,
 };
 
-export const isValidConnection = (connection: Connection) => {
-  console.log(connection);
-  return connection.sourceHandle === connection.targetHandle;
-};
-
 export const Flow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
   const reactFlowWrapper = useRef<any>(null);

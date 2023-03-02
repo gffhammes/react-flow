@@ -8,6 +8,7 @@ export interface IFlowContextValue {
   onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
   handleNewNode: (newNode: Node) => void;
+  isValidConnection: (connection: Connection) => boolean;
 }
 
 const initialValues: IFlowContextValue = {
@@ -17,6 +18,7 @@ const initialValues: IFlowContextValue = {
   onEdgesChange: () => {},
   onConnect: () => {},
   handleNewNode: () => {},
+  isValidConnection: () => false,
 };
 
 export const FlowContext = createContext<IFlowContextValue>(initialValues);
