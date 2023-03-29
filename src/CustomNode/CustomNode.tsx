@@ -1,7 +1,8 @@
 import { memo } from "react";
 import { Connection, Handle, Position } from "reactflow";
 import { Box } from "@mui/material";
-import { useFlowContext } from "./Flow/context/useFlowContext";
+import { useFlowContext } from "../Flow/context/useFlowContext";
+import { CustomNodeContent } from "./CustomNodeContent";
 
 const blue = "#1900ff";
 const red = "#ec0b0b";
@@ -63,9 +64,7 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
         isConnectable={isConnectable}
         isValidConnection={isValidConnection}
       />
-      <Box sx={{ height: "10rem", backgroundColor: "#f4f4f4", px: 4 }}>
-        Custom Node
-      </Box>
+      <CustomNodeContent />
       <Handle
         type="source"
         position={Position.Right}

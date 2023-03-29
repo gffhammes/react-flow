@@ -80,20 +80,20 @@ export const FlowContextProvider = ({
   };
 
   const isValidConnection = (connection: Connection) => {
-    // console.log({ connection, edges });
-
-    const sourceNode = connection.source;
-    const targetNode = connection.target;
-
-    const { sourceHandle, targetHandle } = connection;
-
     const getEdgeAlreadyHasConnection = () => {
       const hasSameTarget = !!edges.find(
         (edge) =>
-          edge.targetHandle === targetHandle && edge.target === targetNode
+          edge.targetHandle === connection.targetHandle &&
+          edge.target === connection.target
       );
 
-      return hasSameTarget;
+      const hasSameSource = !!edges.find(
+        (edge) =>
+          edge.sourceHandle === connection.sourceHandle &&
+          edge.source === connection.source
+      );
+
+      return hasSameTarget || hasSameSource;
     };
 
     const edgeAlreadyHasConnection = getEdgeAlreadyHasConnection();

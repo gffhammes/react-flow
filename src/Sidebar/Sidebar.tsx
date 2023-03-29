@@ -1,5 +1,6 @@
-import { Box } from "@mui/material";
-import { customNode } from "./Flow/context/FlowContextProvider";
+import { Box, Paper } from "@mui/material";
+import { customNode } from "../Flow/context/FlowContextProvider";
+import { CustomNodeContent } from "../CustomNode/CustomNodeContent";
 
 export const Sidebar = () => {
   const onDragStart = (event: any, nodeType: any) => {
@@ -8,10 +9,11 @@ export const Sidebar = () => {
   };
 
   return (
-    <aside>
+    <Paper elevation={10} component="aside" sx={{ p: 4 }}>
       <div onDragStart={(event) => onDragStart(event, customNode)} draggable>
-        Custom Node
+        {/* Custom Node */}
+        <CustomNodeContent />
       </div>
-    </aside>
+    </Paper>
   );
 };

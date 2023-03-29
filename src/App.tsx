@@ -1,7 +1,7 @@
 import "reactflow/dist/style.css";
 import "./App.css";
-import { Flow } from "./Flow";
-import { Sidebar } from "./Sidebar";
+import { Flow } from "./Flow/Flow";
+import { Sidebar } from "./Sidebar/Sidebar";
 import { Stack } from "@mui/material";
 import { FlowContextProvider } from "./Flow/context/FlowContextProvider";
 

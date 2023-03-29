@@ -14,8 +14,8 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
-import { CustomNode } from "./CustomNode";
-import { useFlowContext } from "./Flow/context/useFlowContext";
+import { CustomNode } from "../CustomNode/CustomNode";
+import { useFlowContext } from "./context/useFlowContext";
 
 const nodeTypes = {
   customNode: CustomNode,
