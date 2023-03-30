@@ -7,57 +7,73 @@ import {
 } from "@mui/material";
 import { MouseEventHandler, ReactNode, useState } from "react";
 
-interface ISelectInputProps {
-  value: string;
-  onChange: (event: SelectChangeEvent<any>, child: ReactNode) => void;
+export type TValue = string | number;
+
+export interface ISelectOption {
+  label: string;
+  value: TValue;
 }
 
-const getIsClickAway = (e: any) => {
-  const isClickAway = e.target.classList.contains("MuiModal-backdrop");
+interface ISelectInputProps {
+  value: ISelectOption;
+  options: ISelectOption[];
+  label: string;
 
-  return isClickAway;
-};
+  onChange: (newValue: ISelectOption) => void;
+}
 
-export const SelectInput = ({ value, onChange }: ISelectInputProps) => {
+export const SelectInput = ({
+  value,
+  options,
+  label,
+  onChange,
+}: ISelectInputProps) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleClickCapture: MouseEventHandler<HTMLDivElement> = (e: any) => {
+  const handleClick = (e: any) => {
     const isClickAway = getIsClickAway(e);
 
     if (isClickAway) {
       handleClose();
-    }
-  };
-
-  const handleClick = (e: any) => {
-    const isClickAway = getIsClickAway(e);
-    console.log(isClickAway);
-    if (!isClickAway) {
+    } else {
       handleOpen();
     }
   };
 
   return (
     <FormControl fullWidth>
-      <InputLabel id="demo-simple-select-label">Age</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={value}
-        label="Age"
-        onChange={onChange}
+        value={value.value}
+        label={label}
+        onChange={(e, child: any) => {
+          const selectedOption = options.find(
+            (option) => option.value === child.props.value
+          );
+          onChange(selectedOption!);
+        }}
         open={open}
         onClose={handleClose}
         onClick={handleClick}
-        onClickCapture={handleClickCapture}
+        onClickCapture={handleClick}
       >
-        <MenuItem value={10}>Ten</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
+        {options.map((option) => {
+          return (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          );
+        })}
       </Select>
     </FormControl>
   );
+};
+
+const getIsClickAway = (e: any) => {
+  const isClickAway = e.target.classList.contains("MuiModal-backdrop");
+
+  return isClickAway;
 };
