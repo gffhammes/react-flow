@@ -25,8 +25,15 @@ export const CustomNodeContent = () => {
   };
 
   return (
-    <Box sx={{ height: "30rem", backgroundColor: "#f4f4f4", px: 4, py: 3 }}>
-      Custom Node
+    <Box
+      sx={{
+        height: "10rem",
+        width: "15rem",
+        backgroundColor: "#f4f4f4",
+        px: 4,
+        py: 3,
+      }}
+    >
       <SelectInput
         label="Selecione"
         options={options}
