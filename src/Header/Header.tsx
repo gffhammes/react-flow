@@ -1,6 +1,4 @@
-import { Box, Paper } from "@mui/material";
-import { ISelectOption, SelectInput } from "../Form/SelectInput";
-import { connectors } from "../connectors";
+import { Paper } from "@mui/material";
 import { CheckboxFormGroup } from "../Form/CheckboxFormGroup";
 import { useFilterContext } from "../FilterContext/useFilterContext";
 import { options } from "../Flow/context/FlowContextProvider";

@@ -1,8 +1,10 @@
 import { memo } from "react";
-import { Connection, Handle, HandleType, Position } from "reactflow";
 import { useFlowContext } from "../Flow/context/useFlowContext";
 import { CustomNodeContent } from "./CustomNodeContent";
 import { useFilterContext } from "../FilterContext/useFilterContext";
+import { CustomHandle } from "./Handles/CustomHandle";
+import { Stack } from "@mui/material";
+import { connectors } from "../connectors";
 
 const blue = "#1900ff";
 const red = "#ec0b0b";
@@ -10,124 +12,79 @@ const green = "#16e70f";
 const grey = "#e3e3e3";
 
 interface IHandle {
-  type: HandleType;
-  position: Position;
   id: string;
-  style: React.CSSProperties;
+  color: string;
 }
 
-const connectionCommonProps = {
-  height: "1rem",
-  width: "1rem",
-};
-
-const leftConnectionCommonProps = {
-  ...connectionCommonProps,
-  left: 0,
-  transform: "translateX(-50%)",
-};
-
-const rightConnectionCommonProps = {
-  ...connectionCommonProps,
-  right: 0,
-  transform: "translateX(50%)",
-};
-
-export const CustomNode = memo(({ data, isConnectable }: any) => {
-  const { isValidConnection } = useFlowContext();
+export const CustomNode = memo(({ isConnectable }: any) => {
   const { selectedConnectors } = useFilterContext();
 
   const handles: IHandle[] = [
     {
-      type: "target",
-      position: Position.Left,
       id: blue,
-      style: {
-        background: blue,
-        top: 10,
-        ...leftConnectionCommonProps,
-      },
+      color: blue,
     },
     {
-      type: "target",
-      position: Position.Left,
       id: red,
-      style: {
-        background: red,
-        ...leftConnectionCommonProps,
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-      },
+      color: red,
     },
     {
-      type: "target",
-      position: Position.Left,
       id: green,
-      style: {
-        background: green,
-        top: "auto",
-        bottom: 10,
-        ...leftConnectionCommonProps,
-      },
-    },
-    {
-      type: "source",
-      position: Position.Right,
-      id: blue,
-      style: {
-        top: 10,
-        background: blue,
-        ...rightConnectionCommonProps,
-      },
-    },
-    {
-      type: "source",
-      position: Position.Right,
-      id: red,
-      style: {
-        background: red,
-        ...rightConnectionCommonProps,
-        top: "50%",
-        transform: "translate(50%, -50%)",
-      },
-    },
-    {
-      type: "source",
-      position: Position.Right,
-      id: green,
-      style: {
-        bottom: 10,
-        top: "auto",
-        background: green,
-        ...rightConnectionCommonProps,
-      },
+      color: green,
     },
   ];
 
-  const leftHandles = handles.filter((handle) => handle.type === "target");
-  const rightHandles = handles.filter((handle) => handle.type === "source");
+  const getIsSelectedConnector = (id: string) => {
+    return !!selectedConnectors.find((connector) => connector.value === id);
+  };
+
+  const getConnectorColor = (id: string, color: string) => {
+    const isSelected = getIsSelectedConnector(id);
+
+    if (isSelected) return color;
+
+    return grey;
+  };
 
   return (
     <>
-      {leftHandles.map((handle) => (
-        <Handle
-          key={handle.id}
-          {...handle}
-          isConnectable={isConnectable}
-          isValidConnection={isValidConnection}
-        />
-      ))}
+      <Stack
+        sx={{ position: "absolute", height: "100%", width: "1rem" }}
+        justifyContent="space-between"
+      >
+        {handles.map((handle) => (
+          <CustomHandle
+            type="target"
+            key={handle.id}
+            isConnectable={isConnectable}
+            color={getConnectorColor(handle.id, handle.color)}
+            id={handle.id}
+          />
+        ))}
+      </Stack>
 
       <CustomNodeContent />
 
-      {rightHandles.map((handle) => (
-        <Handle
-          key={handle.id}
-          {...handle}
-          isConnectable={isConnectable}
-          isValidConnection={isValidConnection}
-        />
-      ))}
+      <Stack
+        sx={{
+          position: "absolute",
+          height: "100%",
+          width: "1rem",
+          right: 0,
+          top: 0,
+        }}
+        justifyContent="space-between"
+      >
+        {handles.map((handle) => (
+          <CustomHandle
+            type="source"
+            key={handle.id}
+            isConnectable={isConnectable}
+            color={getConnectorColor(handle.id, handle.color)}
+            id={handle.id}
+          />
+        ))}
+      </Stack>
     </>
   );
 });

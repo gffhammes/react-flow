@@ -1,17 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import ReactFlow, {
-  Controls,
-  Background,
-  applyNodeChanges,
-  applyEdgeChanges,
-  addEdge,
-  Edge,
-  Node,
-  NodeChange,
-  EdgeChange,
-  Connection,
-  Position,
-} from "reactflow";
+import ReactFlow, { Controls, Background, Position } from "reactflow";
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { CustomNode } from "../CustomNode/CustomNode";
@@ -44,7 +32,7 @@ export const Flow = () => {
     (event: any) => {
       event.preventDefault();
 
-      const reactFlowBounds = reactFlowWrapper.current!.getBoundingClientRect();
+      const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
       const type = event.dataTransfer.getData("application/reactflow");
 
       // check if the dropped element is valid

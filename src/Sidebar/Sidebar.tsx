@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 import { customNode } from "../Flow/context/FlowContextProvider";
 import { CustomNodeContent } from "../CustomNode/CustomNodeContent";
 

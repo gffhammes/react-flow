@@ -3,7 +3,6 @@ import {
   FormControl,
   FormControlLabel,
   FormGroup,
-  FormHelperText,
   FormLabel,
 } from "@mui/material";
 import { ISelectOption } from "./SelectInput";

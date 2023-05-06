@@ -47,7 +47,7 @@ export const SelectInput = ({
           const selectedOption = options.find(
             (option) => option.value === child.props.value
           );
-          onChange(selectedOption!);
+          onChange(selectedOption ?? options[0]);
         }}
         open={open}
         onClose={handleClose}

@@ -21,8 +21,6 @@ export const options: ISelectOption[] = connectors.map((connector) => ({
   value: connector.color,
 }));
 
-interface IFlowContextProviderProps extends PropsWithChildren {}
-
 export const customNode = "customNode";
 
 const initialNodes: Node[] = [
@@ -46,9 +44,7 @@ const initialNodes: Node[] = [
 
 const initialEdges: Edge[] = [];
 
-export const FlowContextProvider = ({
-  children,
-}: IFlowContextProviderProps) => {
+export const FlowContextProvider = ({ children }: PropsWithChildren) => {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
 
