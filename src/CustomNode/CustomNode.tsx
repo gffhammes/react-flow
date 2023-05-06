@@ -1,10 +1,8 @@
 import { memo } from "react";
-import { useFlowContext } from "../Flow/context/useFlowContext";
 import { CustomNodeContent } from "./CustomNodeContent";
 import { useFilterContext } from "../FilterContext/useFilterContext";
 import { CustomHandle } from "./Handles/CustomHandle";
 import { Stack } from "@mui/material";
-import { connectors } from "../connectors";
 
 const blue = "#1900ff";
 const red = "#ec0b0b";
