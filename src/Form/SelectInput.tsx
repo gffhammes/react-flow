@@ -1,11 +1,5 @@
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  SelectChangeEvent,
-} from "@mui/material";
-import { MouseEventHandler, ReactNode, useState } from "react";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { useState } from "react";
 
 export type TValue = string | number;
 

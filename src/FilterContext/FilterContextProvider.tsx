@@ -1,6 +1,5 @@
 import { PropsWithChildren, useState } from "react";
 import { FilterContext, IFilterContextValue } from "./FilterContext";
-import { IConnector } from "../connectors";
 import { ISelectOption } from "../Form/SelectInput";
 import { options } from "../Flow/context/FlowContextProvider";
 
