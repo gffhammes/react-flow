@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 import { ISelectOption, SelectInput } from "../Form/SelectInput";
 import { connectors } from "../connectors";
 import { CheckboxFormGroup } from "../Form/CheckboxFormGroup";
@@ -19,13 +19,13 @@ export const Header = () => {
   );
 
   return (
-    <Box sx={{ width: "100%", backgroundColor: "white", p: 4 }}>
+    <Paper sx={{ width: "100%", backgroundColor: "white", p: 4 }}>
       <CheckboxFormGroup
         label="Conexão"
         options={options}
         selectedOptions={selected}
         handleChange={handleSelectedConnectorsChange}
       />
-    </Box>
+    </Paper>
   );
 };

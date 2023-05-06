@@ -12,11 +12,14 @@ function App() {
     <div style={{ height: "100%" }}>
       <FlowContextProvider>
         <FilterContextProvider>
-          <Header />
-          <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
-            <Flow />
+          <Stack sx={{ height: "100%" }}>
+            <Header />
 
-            <Sidebar />
+            <Stack direction="row" sx={{ width: "100%", height: "100%" }}>
+              <Flow />
+
+              <Sidebar />
+            </Stack>
           </Stack>
         </FilterContextProvider>
       </FlowContextProvider>

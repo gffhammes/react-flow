@@ -28,6 +28,7 @@ export const CheckboxFormGroup = ({
   return (
     <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
       {label && <FormLabel component="legend">{label}</FormLabel>}
+
       <FormGroup>
         {options.map((option) => {
           const isSelected = selectedOptions.includes(option);

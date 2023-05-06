@@ -16,6 +16,7 @@ import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { CustomNode } from "../CustomNode/CustomNode";
 import { useFlowContext } from "./context/useFlowContext";
+import { useFilterContext } from "../FilterContext/useFilterContext";
 
 const nodeTypes = {
   customNode: CustomNode,
@@ -32,6 +33,7 @@ export const Flow = () => {
     onNodesChange,
     handleNewNode,
   } = useFlowContext();
+  const { selectedConnectors } = useFilterContext();
 
   const onDragOver = useCallback((event: any) => {
     event.preventDefault();
@@ -69,12 +71,20 @@ export const Flow = () => {
     [reactFlowInstance]
   );
 
+  const filteredEdges = edges.filter((edge) => {
+    const mustShowEdge = !!selectedConnectors.find(
+      (connector) => connector.color === edge.sourceHandle
+    );
+
+    return mustShowEdge;
+  });
+
   return (
     <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodeTypes={nodeTypes}
         nodes={nodes}
-        edges={edges}
+        edges={filteredEdges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
