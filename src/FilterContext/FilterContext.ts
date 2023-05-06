@@ -1,11 +1,10 @@
 import { createContext } from "react";
-import { IConnector } from "../connectors";
-import { IOption } from "../Form/CheckboxFormGroup";
+import { ISelectOption } from "../Form/SelectInput";
 
 export interface IFilterContextValue {
-  selectedConnectors: IConnector[];
+  selectedConnectors: ISelectOption[];
   handleSelectedConnectorsChange: (
-    connector: IOption,
+    connector: ISelectOption,
     checked: boolean
   ) => void;
 }

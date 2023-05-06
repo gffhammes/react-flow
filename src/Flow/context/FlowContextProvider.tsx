@@ -13,6 +13,13 @@ import {
   applyNodeChanges,
 } from "reactflow";
 import uuid from "react-uuid";
+import { ISelectOption } from "../../Form/SelectInput";
+import { connectors } from "../../connectors";
+
+export const options: ISelectOption[] = connectors.map((connector) => ({
+  label: connector.label,
+  value: connector.color,
+}));
 
 interface IFlowContextProviderProps extends PropsWithChildren {}
 

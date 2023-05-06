@@ -73,7 +73,7 @@ export const Flow = () => {
 
   const filteredEdges = edges.filter((edge) => {
     const mustShowEdge = !!selectedConnectors.find(
-      (connector) => connector.color === edge.sourceHandle
+      (connector) => connector.value === edge.sourceHandle
     );
 
     return mustShowEdge;

@@ -6,17 +6,13 @@ import {
   FormHelperText,
   FormLabel,
 } from "@mui/material";
-
-export interface IOption {
-  label: string;
-  value: string | number;
-}
+import { ISelectOption } from "./SelectInput";
 
 export interface ICheckboxFormGroupProps {
   label?: string;
-  options: IOption[];
-  selectedOptions: IOption[];
-  handleChange: (options: IOption, checked: boolean) => void;
+  options: ISelectOption[];
+  selectedOptions: ISelectOption[];
+  handleChange: (options: ISelectOption, checked: boolean) => void;
 }
 
 export const CheckboxFormGroup = ({

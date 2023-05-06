@@ -7,6 +7,7 @@ import { useFilterContext } from "../FilterContext/useFilterContext";
 const blue = "#1900ff";
 const red = "#ec0b0b";
 const green = "#16e70f";
+const grey = "#e3e3e3";
 
 interface IHandle {
   type: HandleType;
@@ -102,11 +103,6 @@ export const CustomNode = memo(({ data, isConnectable }: any) => {
       },
     },
   ];
-
-  // const filteredHandles = handles.filter(
-  //   (handle) =>
-  //     !!selectedConnectors.find((connector) => connector.color === handle.id)
-  // );
 
   const leftHandles = handles.filter((handle) => handle.type === "target");
   const rightHandles = handles.filter((handle) => handle.type === "source");

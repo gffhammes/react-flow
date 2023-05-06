@@ -3,11 +3,7 @@ import { ISelectOption, SelectInput } from "../Form/SelectInput";
 import { connectors } from "../connectors";
 import { CheckboxFormGroup } from "../Form/CheckboxFormGroup";
 import { useFilterContext } from "../FilterContext/useFilterContext";
-
-const options: ISelectOption[] = connectors.map((connector) => ({
-  label: connector.label,
-  value: connector.color,
-}));
+import { options } from "../Flow/context/FlowContextProvider";
 
 export const Header = () => {
   const { selectedConnectors, handleSelectedConnectorsChange } =
@@ -15,7 +11,7 @@ export const Header = () => {
 
   const selected = options.filter(
     (option) =>
-      !!selectedConnectors.find((connector) => connector.color === option.value)
+      !!selectedConnectors.find((connector) => connector.value === option.value)
   );
 
   return (
