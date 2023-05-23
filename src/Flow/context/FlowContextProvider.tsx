@@ -107,6 +107,10 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     );
   };
 
+  const handleDeleteNode = (nodeId: string) => {
+    setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
+  };
+
   const value: IFlowContextValue = {
     nodes,
     edges,
@@ -115,6 +119,7 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     onConnect,
     handleNewNode,
     isValidConnection,
+    handleDeleteNode,
   };
 
   return (

@@ -3,6 +3,7 @@ import { CustomNodeContent } from "./CustomNodeContent";
 import { useFilterContext } from "../FilterContext/useFilterContext";
 import { CustomHandle } from "./Handles/CustomHandle";
 import { Stack } from "@mui/material";
+import { NodeContextMenu } from "./NodeContextMenu";
 
 const blue = "#1900ff";
 const red = "#ec0b0b";
@@ -14,7 +15,12 @@ interface IHandle {
   color: string;
 }
 
-export const CustomNode = memo(({ isConnectable }: any) => {
+export interface ICustomNodeProps {
+  isConnectable: boolean;
+  id: string;
+}
+
+export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
   const { selectedConnectors } = useFilterContext();
 
   const handles: IHandle[] = [
@@ -45,7 +51,7 @@ export const CustomNode = memo(({ isConnectable }: any) => {
   };
 
   return (
-    <>
+    <NodeContextMenu nodeId={id}>
       <Stack
         sx={{ position: "absolute", height: "100%", width: "1rem" }}
         justifyContent="space-between"
@@ -83,6 +89,6 @@ export const CustomNode = memo(({ isConnectable }: any) => {
           />
         ))}
       </Stack>
-    </>
+    </NodeContextMenu>
   );
 });

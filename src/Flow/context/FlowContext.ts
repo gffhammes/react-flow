@@ -9,6 +9,7 @@ export interface IFlowContextValue {
   onConnect: (connection: Connection) => void;
   handleNewNode: (newNode: Node) => void;
   isValidConnection: (connection: Connection) => boolean;
+  handleDeleteNode: (nodeId: string) => void;
 }
 
 const initialValues: IFlowContextValue = {
@@ -18,6 +19,7 @@ const initialValues: IFlowContextValue = {
   onEdgesChange: () => {},
   onConnect: () => {},
   handleNewNode: () => {},
+  handleDeleteNode: () => {},
   isValidConnection: () => false,
 };
 
