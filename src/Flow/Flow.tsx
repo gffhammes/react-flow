@@ -2,13 +2,10 @@ import { useState, useCallback, useRef } from "react";
 import ReactFlow, { Controls, Background, Position } from "reactflow";
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
-import { CustomNode } from "../CustomNode/CustomNode";
 import { useFlowContext } from "./context/useFlowContext";
 import { useFilterContext } from "../FilterContext/useFilterContext";
-
-const nodeTypes = {
-  customNode: CustomNode,
-};
+import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
+import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
 
 export const Flow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
@@ -22,6 +19,7 @@ export const Flow = () => {
     handleNewNode,
   } = useFlowContext();
   const { selectedConnectors } = useFilterContext();
+  const edgeContextMenuRef = useRef<IEdgeContextMenuRef>(null);
 
   const onDragOver = useCallback((event: any) => {
     event.preventDefault();
@@ -71,6 +69,7 @@ export const Flow = () => {
     <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
         nodes={nodes}
         edges={filteredEdges}
         onNodesChange={onNodesChange}
@@ -79,12 +78,24 @@ export const Flow = () => {
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
+        onEdgeContextMenu={(e, edge) => {
+          e.preventDefault();
+          // console.log(e, edge);
+
+          edgeContextMenuRef.current?.handleOpen({
+            mouseX: e.clientX,
+            mouseY: e.clientY,
+            edgeId: edge.id,
+          });
+        }}
         // onConnectStart={(e) => console.log(e)}
         // onConnectEnd={onConnectEnd}
       >
         <Background />
         <Controls />
       </ReactFlow>
+
+      <EdgeContextMenu ref={edgeContextMenuRef} />
     </div>
   );
 };

@@ -15,6 +15,8 @@ import {
 import uuid from "react-uuid";
 import { ISelectOption } from "../../Form/SelectInput";
 import { connectors } from "../../connectors";
+import { CustomNode } from "../../CustomNode/CustomNode";
+import { ButtonEdge } from "../ButtonEdge";
 
 export const options: ISelectOption[] = connectors.map((connector) => ({
   label: connector.label,
@@ -22,6 +24,14 @@ export const options: ISelectOption[] = connectors.map((connector) => ({
 }));
 
 export const customNode = "customNode";
+
+export const nodeTypes = {
+  customNode: CustomNode,
+};
+
+export const edgeTypes = {
+  buttonedge: ButtonEdge,
+};
 
 const initialNodes: Node[] = [
   {
@@ -66,6 +76,7 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
         addEdge(
           {
             ...connection,
+            type: "buttonedge",
             style: {
               strokeWidth: 2,
               stroke: connection.sourceHandle ?? "",
@@ -78,8 +89,16 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     [setEdges]
   );
 
+  const handleDeleteEdge = (edgeId: string) => {
+    setEdges((edges) => edges.filter((edge) => edge.id !== edgeId));
+  };
+
   const handleNewNode = (newNode: Node) => {
     setNodes((nodes) => nodes.concat(newNode));
+  };
+
+  const handleDeleteNode = (nodeId: string) => {
+    setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
   };
 
   const isValidConnection = (connection: Connection) => {
@@ -107,10 +126,6 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     );
   };
 
-  const handleDeleteNode = (nodeId: string) => {
-    setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
-  };
-
   const value: IFlowContextValue = {
     nodes,
     edges,
@@ -119,6 +134,7 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     onConnect,
     handleNewNode,
     isValidConnection,
+    handleDeleteEdge,
     handleDeleteNode,
   };
 

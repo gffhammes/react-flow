@@ -4,6 +4,7 @@ import {
   FormControlLabel,
   FormGroup,
   FormLabel,
+  Stack,
 } from "@mui/material";
 import { ISelectOption } from "./SelectInput";
 
@@ -25,23 +26,25 @@ export const CheckboxFormGroup = ({
       {label && <FormLabel component="legend">{label}</FormLabel>}
 
       <FormGroup>
-        {options.map((option) => {
-          const isSelected = selectedOptions.includes(option);
+        <Stack direction="row" spacing={2}>
+          {options.map((option) => {
+            const isSelected = selectedOptions.includes(option);
 
-          return (
-            <FormControlLabel
-              key={option.value}
-              control={
-                <Checkbox
-                  checked={isSelected}
-                  onChange={(e, checked) => handleChange(option, checked)}
-                  name={option.label}
-                />
-              }
-              label={option.label}
-            />
-          );
-        })}
+            return (
+              <FormControlLabel
+                key={option.value}
+                control={
+                  <Checkbox
+                    checked={isSelected}
+                    onChange={(e, checked) => handleChange(option, checked)}
+                    name={option.label}
+                  />
+                }
+                label={option.label}
+              />
+            );
+          })}
+        </Stack>
       </FormGroup>
     </FormControl>
   );
