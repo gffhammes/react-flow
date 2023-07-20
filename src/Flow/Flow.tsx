@@ -1,5 +1,10 @@
 import { useState, useCallback, useRef } from "react";
-import ReactFlow, { Controls, Background, Position } from "reactflow";
+import ReactFlow, {
+  Controls,
+  Background,
+  Position,
+  ConnectionLineType,
+} from "reactflow";
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
@@ -78,9 +83,9 @@ export const Flow = () => {
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
+        connectionLineType={ConnectionLineType.SmoothStep}
         onEdgeContextMenu={(e, edge) => {
           e.preventDefault();
-          // console.log(e, edge);
 
           edgeContextMenuRef.current?.handleOpen({
             mouseX: e.clientX,
