@@ -14,14 +14,16 @@ import {
 } from "reactflow";
 import uuid from "react-uuid";
 import { ISelectOption } from "../../Form/SelectInput";
-import { connectors } from "../../connectors";
 import { CustomNode } from "../../CustomNode/CustomNode";
-import { ButtonEdge } from "../ButtonEdge";
+import { ButtonEdge } from "../../Edge/ButtonEdge";
+import { handlesOptions } from "../../CustomNode/Handles/handles";
 
-export const options: ISelectOption[] = connectors.map((connector) => ({
-  label: connector.label,
-  value: connector.color,
-}));
+export const options: ISelectOption[] = Object.values(handlesOptions).map(
+  (connector) => ({
+    label: connector.name,
+    value: connector.id,
+  })
+);
 
 export const customNode = "customNode";
 
@@ -77,9 +79,8 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
           {
             ...connection,
             type: "buttonedge",
-            style: {
-              strokeWidth: 2,
-              stroke: connection.sourceHandle ?? "",
+            data: {
+              handleId: connection.sourceHandle,
             },
           },
           eds

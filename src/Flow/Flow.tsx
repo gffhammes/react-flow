@@ -9,7 +9,11 @@ import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
 import { useFilterContext } from "../FilterContext/useFilterContext";
-import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
+import {
+  edgeTypes,
+  //  edgeTypes,
+  nodeTypes,
+} from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
 
 export const Flow = () => {
@@ -67,7 +71,7 @@ export const Flow = () => {
       (connector) => connector.value === edge.sourceHandle
     );
 
-    return mustShowEdge;
+    return true; //mustShowEdge;
   });
 
   return (
@@ -79,7 +83,11 @@ export const Flow = () => {
         edges={filteredEdges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onConnect={onConnect}
+        onConnect={(connection) => {
+          console.log(connection);
+
+          onConnect(connection);
+        }}
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}

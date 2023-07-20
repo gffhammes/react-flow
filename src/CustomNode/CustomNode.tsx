@@ -4,14 +4,11 @@ import { useFilterContext } from "../FilterContext/useFilterContext";
 import { CustomHandle } from "./Handles/CustomHandle";
 import { Stack } from "@mui/material";
 import { NodeContextMenu } from "./NodeContextMenu";
+import { handlesOptions } from "./Handles/handles";
 
-const blue = "#1900ff";
-const red = "#ec0b0b";
-const green = "#16e70f";
-const grey = "#e3e3e3";
-
-interface IHandle {
+export interface IHandle {
   id: string;
+  name: string;
   color: string;
 }
 
@@ -20,43 +17,37 @@ export interface ICustomNodeProps {
   id: string;
 }
 
+const leftHandles: IHandle[] = [
+  handlesOptions.blueHandle,
+  handlesOptions.redHandle,
+  handlesOptions.greenHandle,
+];
+
+const rightHandles: IHandle[] = [
+  handlesOptions.blueHandle,
+  handlesOptions.redHandle,
+];
+
 export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
   const { selectedConnectors } = useFilterContext();
 
-  const handles: IHandle[] = [
-    {
-      id: blue,
-      color: blue,
-    },
-    {
-      id: red,
-      color: red,
-    },
-    {
-      id: green,
-      color: green,
-    },
-  ];
-
-  const getIsSelectedConnector = (id: string) => {
-    return !!selectedConnectors.find((connector) => connector.value === id);
-  };
-
   const getConnectorColor = (id: string, color: string) => {
-    const isSelected = getIsSelectedConnector(id);
+    // const isSelected = !!selectedConnectors.find(
+    //   (connector) => connector.value === id
+    // );
 
-    if (isSelected) return color;
+    // if (isSelected) return color;
 
-    return grey;
+    return "#000";
   };
 
   return (
     <NodeContextMenu nodeId={id}>
       <Stack
-        sx={{ position: "absolute", height: "100%", width: "1rem" }}
+        sx={{ position: "absolute", height: "70%", width: "1rem", top: "15%" }}
         justifyContent="space-between"
       >
-        {handles.map((handle) => (
+        {leftHandles.map((handle) => (
           <CustomHandle
             type="target"
             key={handle.id}
@@ -72,14 +63,14 @@ export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
       <Stack
         sx={{
           position: "absolute",
-          height: "100%",
+          height: "70%",
           width: "1rem",
           right: 0,
-          top: 0,
+          top: "15%",
         }}
         justifyContent="space-between"
       >
-        {handles.map((handle) => (
+        {rightHandles.map((handle) => (
           <CustomHandle
             type="source"
             key={handle.id}
