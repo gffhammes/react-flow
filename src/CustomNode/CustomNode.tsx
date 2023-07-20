@@ -32,11 +32,11 @@ export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
   const { selectedConnectors } = useFilterContext();
 
   const getConnectorColor = (id: string, color: string) => {
-    // const isSelected = !!selectedConnectors.find(
-    //   (connector) => connector.value === id
-    // );
+    const isSelected = !!selectedConnectors.find(
+      (connector) => connector.value === id
+    );
 
-    // if (isSelected) return color;
+    if (isSelected) return color;
 
     return "#000";
   };

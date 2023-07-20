@@ -1,5 +1,6 @@
 import { BaseEdge, EdgeProps, getSmoothStepPath } from "reactflow";
 import { handlesOptions } from "../CustomNode/Handles/handles";
+import { useFilterContext } from "../FilterContext/useFilterContext";
 
 export const ButtonEdge = ({
   sourceX,
@@ -10,7 +11,7 @@ export const ButtonEdge = ({
   targetPosition,
   style = {},
   markerEnd,
-  data,
+  targetHandleId,
 }: EdgeProps) => {
   const [edgePath] = getSmoothStepPath({
     sourceX,
@@ -21,11 +22,15 @@ export const ButtonEdge = ({
     targetPosition,
   });
 
-  const handleObject = Object.values(handlesOptions).find(
-    (option) => option.id === data.handleId
+  const { selectedConnectors } = useFilterContext();
+
+  const isFiltered = !!selectedConnectors.find(
+    (connector) => connector.value === targetHandleId
   );
 
-  console.log(handleObject);
+  const handleObject = Object.values(handlesOptions).find(
+    (option) => option.id === targetHandleId
+  );
 
   return (
     <BaseEdge
@@ -34,7 +39,7 @@ export const ButtonEdge = ({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: handleObject?.color,
+        stroke: isFiltered ? handleObject?.color : "#363636",
       }}
     />
   );

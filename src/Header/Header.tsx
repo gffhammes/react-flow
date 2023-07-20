@@ -1,13 +1,13 @@
 import { Paper } from "@mui/material";
 import { CheckboxFormGroup } from "../Form/CheckboxFormGroup";
 import { useFilterContext } from "../FilterContext/useFilterContext";
-import { options } from "../Flow/context/FlowContextProvider";
+import { filterOptions } from "../Flow/context/FlowContextProvider";
 
 export const Header = () => {
   const { selectedConnectors, handleSelectedConnectorsChange } =
     useFilterContext();
 
-  const selected = options.filter(
+  const selected = filterOptions.filter(
     (option) =>
       !!selectedConnectors.find((connector) => connector.value === option.value)
   );
@@ -16,7 +16,7 @@ export const Header = () => {
     <Paper sx={{ width: "100%", backgroundColor: "white", p: 4 }}>
       <CheckboxFormGroup
         label="Conexão"
-        options={options}
+        options={filterOptions}
         selectedOptions={selected}
         handleChange={handleSelectedConnectorsChange}
       />

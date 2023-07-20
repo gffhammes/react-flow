@@ -8,12 +8,7 @@ import ReactFlow, {
 import "reactflow/dist/style.css";
 import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
-import { useFilterContext } from "../FilterContext/useFilterContext";
-import {
-  edgeTypes,
-  //  edgeTypes,
-  nodeTypes,
-} from "./context/FlowContextProvider";
+import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
 
 export const Flow = () => {
@@ -27,7 +22,6 @@ export const Flow = () => {
     onNodesChange,
     handleNewNode,
   } = useFlowContext();
-  const { selectedConnectors } = useFilterContext();
   const edgeContextMenuRef = useRef<IEdgeContextMenuRef>(null);
 
   const onDragOver = useCallback((event: any) => {
@@ -66,28 +60,16 @@ export const Flow = () => {
     [reactFlowInstance]
   );
 
-  const filteredEdges = edges.filter((edge) => {
-    const mustShowEdge = !!selectedConnectors.find(
-      (connector) => connector.value === edge.sourceHandle
-    );
-
-    return true; //mustShowEdge;
-  });
-
   return (
     <div style={{ height: "100%", width: "100%" }} ref={reactFlowWrapper}>
       <ReactFlow
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         nodes={nodes}
-        edges={filteredEdges}
+        edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onConnect={(connection) => {
-          console.log(connection);
-
-          onConnect(connection);
-        }}
+        onConnect={onConnect}
         onInit={setReactFlowInstance}
         onDrop={onDrop}
         onDragOver={onDragOver}
@@ -101,8 +83,6 @@ export const Flow = () => {
             edgeId: edge.id,
           });
         }}
-        // onConnectStart={(e) => console.log(e)}
-        // onConnectEnd={onConnectEnd}
       >
         <Background />
         <Controls />

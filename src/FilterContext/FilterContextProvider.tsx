@@ -1,11 +1,11 @@
 import { PropsWithChildren, useState } from "react";
 import { FilterContext, IFilterContextValue } from "./FilterContext";
 import { ISelectOption } from "../Form/SelectInput";
-import { options } from "../Flow/context/FlowContextProvider";
+import { filterOptions } from "../Flow/context/FlowContextProvider";
 
 export const FilterContextProvider = ({ children }: PropsWithChildren) => {
   const [selectedConnectors, setSelectedConnectors] =
-    useState<ISelectOption[]>(options);
+    useState<ISelectOption[]>(filterOptions);
 
   const handleSelectedConnectorsChange = (
     connector: ISelectOption,

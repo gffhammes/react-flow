@@ -18,7 +18,7 @@ import { CustomNode } from "../../CustomNode/CustomNode";
 import { ButtonEdge } from "../../Edge/ButtonEdge";
 import { handlesOptions } from "../../CustomNode/Handles/handles";
 
-export const options: ISelectOption[] = Object.values(handlesOptions).map(
+export const filterOptions: ISelectOption[] = Object.values(handlesOptions).map(
   (connector) => ({
     label: connector.name,
     value: connector.id,
@@ -79,9 +79,6 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
           {
             ...connection,
             type: "buttonedge",
-            data: {
-              handleId: connection.sourceHandle,
-            },
           },
           eds
         )
