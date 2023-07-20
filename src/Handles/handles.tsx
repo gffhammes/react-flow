@@ -1,4 +1,4 @@
-import { IHandle } from "../Node/CustomNode/CustomNode";
+import { IHandle } from "./interfaces";
 
 const blueHandle: IHandle = {
   id: "1",
