@@ -1,33 +1,16 @@
 import { memo } from "react";
 import { CustomNodeContent } from "./CustomNodeContent";
-import { useFilterContext } from "../FilterContext/useFilterContext";
-import { CustomHandle } from "./Handles/CustomHandle";
+import { useFilterContext } from "../../FilterContext/useFilterContext";
+import { CustomHandle } from "../../Handles/CustomHandle";
 import { Stack } from "@mui/material";
-import { NodeContextMenu } from "./NodeContextMenu";
-import { handlesOptions } from "./Handles/handles";
-import { disabledGrey } from "../utils";
-
-export interface IHandle {
-  id: string;
-  name: string;
-  color: string;
-}
+import { NodeContextMenu } from "../NodeContextMenu";
+import { disabledGrey } from "../../utils";
+import { leftHandles, rightHandles } from "./CustomNodeHandles";
 
 export interface ICustomNodeProps {
   isConnectable: boolean;
   id: string;
 }
-
-const leftHandles: IHandle[] = [
-  handlesOptions.blueHandle,
-  handlesOptions.redHandle,
-  handlesOptions.greenHandle,
-];
-
-const rightHandles: IHandle[] = [
-  handlesOptions.blueHandle,
-  handlesOptions.redHandle,
-];
 
 export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
   const { selectedConnectors } = useFilterContext();

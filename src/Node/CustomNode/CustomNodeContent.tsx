@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { ISelectOption, SelectInput } from "../Form/SelectInput";
+import { ISelectOption, SelectInput } from "../../Form/SelectInput";
 import { useState } from "react";
 
 const options: ISelectOption[] = [

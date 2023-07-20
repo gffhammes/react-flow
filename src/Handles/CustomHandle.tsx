@@ -1,5 +1,5 @@
 import { Handle, HandleType, Position } from "reactflow";
-import { useFlowContext } from "../../Flow/context/useFlowContext";
+import { useFlowContext } from "../Flow/context/useFlowContext";
 
 export interface ITargetHandleProps {
   isConnectable: boolean;

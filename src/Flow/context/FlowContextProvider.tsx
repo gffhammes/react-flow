@@ -14,9 +14,9 @@ import {
 } from "reactflow";
 import uuid from "react-uuid";
 import { ISelectOption } from "../../Form/SelectInput";
-import { CustomNode } from "../../CustomNode/CustomNode";
+import { CustomNode } from "../../Node/CustomNode/CustomNode";
 import { ButtonEdge } from "../../Edge/ButtonEdge";
-import { handlesOptions } from "../../CustomNode/Handles/handles";
+import { handlesOptions } from "../../Handles/handles";
 
 export const filterOptions: ISelectOption[] = Object.values(handlesOptions).map(
   (connector) => ({

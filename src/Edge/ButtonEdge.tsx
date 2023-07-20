@@ -1,5 +1,5 @@
 import { BaseEdge, EdgeProps, getSmoothStepPath } from "reactflow";
-import { handlesOptions } from "../CustomNode/Handles/handles";
+import { handlesOptions } from "../Handles/handles";
 import { useFilterContext } from "../FilterContext/useFilterContext";
 import { disabledGrey } from "../utils";
 

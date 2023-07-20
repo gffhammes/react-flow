@@ -1,29 +1,32 @@
-import { IHandle } from "../CustomNode";
-
-const blue = "#1900ff";
-const red = "#ec0b0b";
-const green = "#16e70f";
+import { IHandle } from "../Node/CustomNode/CustomNode";
 
 const blueHandle: IHandle = {
   id: "1",
   name: "Azul",
-  color: blue,
+  color: "#1900ff",
 };
 
 const redHandle: IHandle = {
   id: "2",
   name: "Vermelho",
-  color: red,
+  color: "#ec0b0b",
 };
 
 const greenHandle: IHandle = {
   id: "3",
   name: "Verde",
-  color: green,
+  color: "#16e70f",
+};
+
+const purpleHandle: IHandle = {
+  id: "4",
+  name: "Roxo",
+  color: "#8900e4",
 };
 
 export const handlesOptions = {
   blueHandle,
   redHandle,
   greenHandle,
+  purpleHandle,
 };

@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
 import { customNode } from "../Flow/context/FlowContextProvider";
-import { CustomNodeContent } from "../CustomNode/CustomNodeContent";
+import { CustomNodeContent } from "../Node/CustomNode/CustomNodeContent";
 
 export const Sidebar = () => {
   const onDragStart = (event: any, nodeType: any) => {
