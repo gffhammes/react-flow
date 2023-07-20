@@ -1,6 +1,7 @@
 import { BaseEdge, EdgeProps, getSmoothStepPath } from "reactflow";
 import { handlesOptions } from "../CustomNode/Handles/handles";
 import { useFilterContext } from "../FilterContext/useFilterContext";
+import { disabledGrey } from "../utils";
 
 export const ButtonEdge = ({
   sourceX,
@@ -39,7 +40,7 @@ export const ButtonEdge = ({
       style={{
         ...style,
         strokeWidth: 2,
-        stroke: isFiltered ? handleObject?.color : "#363636",
+        stroke: isFiltered ? handleObject?.color : disabledGrey,
       }}
     />
   );

@@ -5,6 +5,7 @@ import { CustomHandle } from "./Handles/CustomHandle";
 import { Stack } from "@mui/material";
 import { NodeContextMenu } from "./NodeContextMenu";
 import { handlesOptions } from "./Handles/handles";
+import { disabledGrey } from "../utils";
 
 export interface IHandle {
   id: string;
@@ -38,7 +39,7 @@ export const CustomNode = memo(({ isConnectable, id }: ICustomNodeProps) => {
 
     if (isSelected) return color;
 
-    return "#000";
+    return disabledGrey;
   };
 
   return (
