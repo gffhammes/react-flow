@@ -1,5 +1,4 @@
-import React from "react";
-import { BaseEdge, EdgeProps, getBezierPath } from "reactflow";
+import { BaseEdge, EdgeProps, getSmoothStepPath } from "reactflow";
 
 export const ButtonEdge = ({
   sourceX,
@@ -11,7 +10,7 @@ export const ButtonEdge = ({
   style = {},
   markerEnd,
 }: EdgeProps) => {
-  const [edgePath] = getBezierPath({
+  const [edgePath] = getSmoothStepPath({
     sourceX,
     sourceY,
     sourcePosition,
