@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { ISelectOption, SelectInput } from "../../Form/SelectInput";
 import { useState } from "react";
+import { IDimentions } from "../../interfaces";
 
 const options: ISelectOption[] = [
   {
@@ -16,11 +17,6 @@ const options: ISelectOption[] = [
     value: 2,
   },
 ];
-
-export interface IDimentions {
-  height: number;
-  width: number;
-}
 
 export const customNodeDimentions: IDimentions = {
   height: 160,

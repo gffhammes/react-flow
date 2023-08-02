@@ -10,10 +10,8 @@ import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
 import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
-import {
-  IDimentions,
-  customNodeDimentions,
-} from "../Node/CustomNode/CustomNodeContent";
+import { customNodeDimentions } from "../Node/CustomNode/CustomNodeContent";
+import { IDimentions } from "../interfaces";
 
 export const Flow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);

@@ -1,4 +1,4 @@
-import { IHandle } from "./interfaces";
+import { IHandle } from "../interfaces";
 
 const blueHandle: IHandle = {
   id: "1",
