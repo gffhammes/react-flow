@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, DragEventHandler } from "react";
 import ReactFlow, {
   Controls,
   Background,
@@ -10,6 +10,10 @@ import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
 import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
+import {
+  IDimentions,
+  customNodeDimentions,
+} from "../Node/CustomNode/CustomNodeContent";
 
 export const Flow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
@@ -24,13 +28,13 @@ export const Flow = () => {
   } = useFlowContext();
   const edgeContextMenuRef = useRef<IEdgeContextMenuRef>(null);
 
-  const onDragOver = useCallback((event: any) => {
+  const onDragOver: DragEventHandler<HTMLDivElement> = useCallback((event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
 
-  const onDrop = useCallback(
-    (event: any) => {
+  const onDrop: DragEventHandler<HTMLDivElement> = useCallback(
+    (event) => {
       event.preventDefault();
 
       const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
@@ -41,9 +45,24 @@ export const Flow = () => {
         return;
       }
 
+      const getNodeDimentions = (): IDimentions => {
+        switch (type) {
+          case "customNode":
+            return customNodeDimentions;
+
+          default:
+            return {
+              height: 0,
+              width: 0,
+            };
+        }
+      };
+
+      const nodeDimentions = getNodeDimentions();
+
       const position = reactFlowInstance?.project({
-        x: event.clientX - reactFlowBounds.left,
-        y: event.clientY - reactFlowBounds.top,
+        x: event.clientX - reactFlowBounds.left - nodeDimentions.width / 2,
+        y: event.clientY - reactFlowBounds.top - nodeDimentions.height / 2,
       });
 
       const newNode = {

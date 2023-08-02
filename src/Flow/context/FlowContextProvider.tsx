@@ -6,13 +6,11 @@ import {
   EdgeChange,
   Node,
   NodeChange,
-  Position,
   ReactFlowProvider,
   addEdge,
   applyEdgeChanges,
   applyNodeChanges,
 } from "reactflow";
-import uuid from "react-uuid";
 import { ISelectOption } from "../../Form/SelectInput";
 import { CustomNode } from "../../Node/CustomNode/CustomNode";
 import { ButtonEdge } from "../../Edge/ButtonEdge";
@@ -35,24 +33,7 @@ export const edgeTypes = {
   buttonedge: ButtonEdge,
 };
 
-const initialNodes: Node[] = [
-  {
-    id: uuid(),
-    data: { label: "Hello" },
-    position: { x: 200, y: 200 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    type: customNode,
-  },
-  {
-    id: uuid(),
-    data: { label: "World" },
-    position: { x: 600, y: 200 },
-    targetPosition: Position.Left,
-    sourcePosition: Position.Right,
-    type: customNode,
-  },
-];
+const initialNodes: Node[] = [];
 
 const initialEdges: Edge[] = [];
 

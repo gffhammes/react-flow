@@ -11,8 +11,9 @@ export const Sidebar = () => {
   return (
     <Paper elevation={10} component="aside" sx={{ p: 4 }}>
       <div onDragStart={(event) => onDragStart(event, customNode)} draggable>
-        {/* Custom Node */}
-        <CustomNodeContent />
+        <div id="custom-node">
+          <CustomNodeContent />
+        </div>
       </div>
     </Paper>
   );

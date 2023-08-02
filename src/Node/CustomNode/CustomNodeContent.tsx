@@ -17,6 +17,16 @@ const options: ISelectOption[] = [
   },
 ];
 
+export interface IDimentions {
+  height: number;
+  width: number;
+}
+
+export const customNodeDimentions: IDimentions = {
+  height: 160,
+  width: 240,
+};
+
 export const CustomNodeContent = () => {
   const [selectedValue, setSelectedValue] = useState(options[0]);
 
@@ -26,13 +36,7 @@ export const CustomNodeContent = () => {
 
   return (
     <Box
-      sx={{
-        height: "10rem",
-        width: "15rem",
-        backgroundColor: "#f4f4f4",
-        px: 4,
-        py: 3,
-      }}
+      sx={{ ...customNodeDimentions, backgroundColor: "#f4f4f4", px: 4, py: 3 }}
     >
       <SelectInput
         label="Selecione"
