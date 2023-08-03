@@ -1,5 +1,5 @@
 import { ISelectOption } from "./Form/SelectInput";
-import { IHandle } from "./Handles/interfaces";
+import { IHandle } from "./interfaces";
 
 export const disabledGrey = "#e3e3e3";
 
