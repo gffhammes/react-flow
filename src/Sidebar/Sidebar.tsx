@@ -1,6 +1,6 @@
 import { Paper } from "@mui/material";
-import { customNode } from "../Flow/context/FlowContextProvider";
 import { CustomNodeContent } from "../Node/CustomNode/CustomNodeContent";
+import { customNodes } from "../Node/CustomNode/customNodes";
 
 export const Sidebar = () => {
   const onDragStart = (event: any, nodeType: any) => {
@@ -10,11 +10,22 @@ export const Sidebar = () => {
 
   return (
     <Paper elevation={10} component="aside" sx={{ p: 4 }}>
-      <div onDragStart={(event) => onDragStart(event, customNode)} draggable>
-        <div id="custom-node">
-          <CustomNodeContent />
-        </div>
-      </div>
+      {customNodes.map((customNode) => {
+        return (
+          <div
+            key={customNode.name}
+            onDragStart={(event) => onDragStart(event, customNode.name)}
+            draggable
+          >
+            <div id="custom-node">
+              <CustomNodeContent
+                dimentions={customNode.dimentions}
+                name={customNode.name}
+              />
+            </div>
+          </div>
+        );
+      })}
     </Paper>
   );
 };

@@ -1,23 +1,17 @@
 import { Stack } from "@mui/material";
 import { CustomHandle } from "../../Handles/CustomHandle";
-import { handlesOptions } from "../../Handles/handles";
-import { IHandle } from "../../Handles/interfaces";
 import { getConnectorColor } from "../../utils";
 import { useFilterContext } from "../../FilterContext/useFilterContext";
-
-export const leftHandles: IHandle[] = [
-  handlesOptions.blueHandle,
-  handlesOptions.redHandle,
-  handlesOptions.greenHandle,
-  handlesOptions.purpleHandle,
-];
+import { ICustomNodeHandle } from "./interfaces";
 
 export interface ICustomNodeLeftHandlesProps {
   isConnectable: boolean;
+  leftHandles: ICustomNodeHandle[];
 }
 
 export const CustomNodeLeftHandles = ({
   isConnectable,
+  leftHandles,
 }: ICustomNodeLeftHandlesProps) => {
   const { selectedConnectors } = useFilterContext();
 

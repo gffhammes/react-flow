@@ -6,6 +6,7 @@ import {
   EdgeChange,
   Node,
   NodeChange,
+  NodeTypes,
   ReactFlowProvider,
   addEdge,
   applyEdgeChanges,
@@ -15,6 +16,7 @@ import { ISelectOption } from "../../Form/SelectInput";
 import { CustomNode } from "../../Node/CustomNode/CustomNode";
 import { ButtonEdge } from "../../Edge/ButtonEdge";
 import { handlesOptions } from "../../Handles/handles";
+import { customNodes } from "../../Node/CustomNode/customNodes";
 
 export const filterOptions: ISelectOption[] = Object.values(handlesOptions).map(
   (connector) => ({
@@ -23,11 +25,17 @@ export const filterOptions: ISelectOption[] = Object.values(handlesOptions).map(
   })
 );
 
-export const customNode = "customNode";
-
-export const nodeTypes = {
-  customNode: CustomNode,
-};
+export const nodeTypes: NodeTypes = customNodes.reduce(
+  (accumulator, customNode) => {
+    return {
+      ...accumulator,
+      [customNode.name]: (props) => (
+        <CustomNode {...props} nodeData={customNode} />
+      ),
+    };
+  },
+  {} as NodeTypes
+);
 
 export const edgeTypes = {
   buttonedge: ButtonEdge,

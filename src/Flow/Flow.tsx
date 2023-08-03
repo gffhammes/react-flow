@@ -10,8 +10,6 @@ import uuid from "react-uuid";
 import { useFlowContext } from "./context/useFlowContext";
 import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
-import { customNodeDimentions } from "../Node/CustomNode/CustomNodeContent";
-import { IDimentions } from "../interfaces";
 
 export const Flow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
@@ -43,24 +41,9 @@ export const Flow = () => {
         return;
       }
 
-      const getNodeDimentions = (): IDimentions => {
-        switch (type) {
-          case "customNode":
-            return customNodeDimentions;
-
-          default:
-            return {
-              height: 0,
-              width: 0,
-            };
-        }
-      };
-
-      const nodeDimentions = getNodeDimentions();
-
       const position = reactFlowInstance?.project({
-        x: event.clientX - reactFlowBounds.left - nodeDimentions.width / 2,
-        y: event.clientY - reactFlowBounds.top - nodeDimentions.height / 2,
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
       });
 
       const newNode = {

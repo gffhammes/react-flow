@@ -1,4 +1,3 @@
-import { Position } from "reactflow";
 import { handlesOptions } from "../../Handles/handles";
 import { ICustomNode } from "./interfaces";
 
@@ -9,15 +8,25 @@ const customNode1: ICustomNode = {
     width: 160,
   },
   inputs: [
-    { ...handlesOptions.blueHandle, position: Position.Left },
-    { ...handlesOptions.greenHandle, position: Position.Left },
-    { ...handlesOptions.redHandle, position: Position.Left },
+    handlesOptions.blueHandle,
+    handlesOptions.greenHandle,
+    handlesOptions.redHandle,
   ],
   outputs: [
-    { ...handlesOptions.blueHandle, position: Position.Right },
-    { ...handlesOptions.greenHandle, position: Position.Right },
-    { ...handlesOptions.redHandle, position: Position.Right },
+    handlesOptions.blueHandle,
+    handlesOptions.greenHandle,
+    handlesOptions.redHandle,
   ],
 };
 
-export const customNodes: ICustomNode[] = [customNode1];
+const customNode2: ICustomNode = {
+  name: "customNode2",
+  dimentions: {
+    height: 160,
+    width: 160,
+  },
+  inputs: [handlesOptions.redHandle],
+  outputs: [handlesOptions.redHandle],
+};
+
+export const customNodes: ICustomNode[] = [customNode1, customNode2];

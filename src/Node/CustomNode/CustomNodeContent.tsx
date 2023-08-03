@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { ISelectOption, SelectInput } from "../../Form/SelectInput";
 import { useState } from "react";
 import { IDimentions } from "../../interfaces";
@@ -18,12 +18,15 @@ const options: ISelectOption[] = [
   },
 ];
 
-export const customNodeDimentions: IDimentions = {
-  height: 160,
-  width: 240,
-};
+export interface ICustomNodeContentProps {
+  dimentions: IDimentions;
+  name: string;
+}
 
-export const CustomNodeContent = () => {
+export const CustomNodeContent = ({
+  dimentions,
+  name,
+}: ICustomNodeContentProps) => {
   const [selectedValue, setSelectedValue] = useState(options[0]);
 
   const handleChange = (newValue: ISelectOption) => {
@@ -31,15 +34,17 @@ export const CustomNodeContent = () => {
   };
 
   return (
-    <Box
-      sx={{ ...customNodeDimentions, backgroundColor: "#f4f4f4", px: 4, py: 3 }}
-    >
-      <SelectInput
-        label="Selecione"
-        options={options}
-        value={selectedValue}
-        onChange={handleChange}
-      />
+    <Box sx={{ ...dimentions, backgroundColor: "#f4f4f4", px: 4, py: 3 }}>
+      <Stack spacing={4}>
+        <Typography>{name}</Typography>
+
+        <SelectInput
+          label="Selecione"
+          options={options}
+          value={selectedValue}
+          onChange={handleChange}
+        />
+      </Stack>
     </Box>
   );
 };
