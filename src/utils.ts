@@ -15,3 +15,7 @@ export const getConnectorColor = (
 
   return disabledGrey;
 };
+
+export const getHandleType = (handleId: string) => {
+  return handleId.split("-")[0];
+};
