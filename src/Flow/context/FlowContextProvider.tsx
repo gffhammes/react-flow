@@ -17,6 +17,7 @@ import { CustomNode } from "../../Node/CustomNode/CustomNode";
 import { ButtonEdge } from "../../Edge/ButtonEdge";
 import { handlesOptions } from "../../Handles/handles";
 import { customNodes } from "../../Node/CustomNode/customNodes";
+import { getHandleType } from "../../utils";
 
 export const filterOptions: ISelectOption[] = Object.values(handlesOptions).map(
   (connector) => ({
@@ -107,10 +108,12 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
 
     const edgeAlreadyHasConnection = getEdgeAlreadyHasConnection();
 
-    return (
-      connection.sourceHandle === connection.targetHandle &&
-      !edgeAlreadyHasConnection
-    );
+    const sourceType = getHandleType(connection.sourceHandle ?? "");
+    const targetType = getHandleType(connection.targetHandle ?? "");
+
+    const isSameTypeHandles = sourceType === targetType;
+
+    return isSameTypeHandles && !edgeAlreadyHasConnection;
   };
 
   const value: IFlowContextValue = {

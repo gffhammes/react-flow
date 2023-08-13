@@ -26,7 +26,7 @@ const customNode2: ICustomNode = {
     width: 160,
   },
   inputs: [handlesOptions.redHandle],
-  outputs: [handlesOptions.redHandle],
+  outputs: [handlesOptions.redHandle, handlesOptions.redHandle],
 };
 
 export const customNodes: ICustomNode[] = [customNode1, customNode2];
