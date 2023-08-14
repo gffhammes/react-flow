@@ -29,4 +29,40 @@ const customNode2: ICustomNode = {
   outputs: [handlesOptions.redHandle, handlesOptions.redHandle],
 };
 
-export const customNodes: ICustomNode[] = [customNode1, customNode2];
+const customECS4708: ICustomNode = {
+  name: "ECS-4708",
+  dimentions: {
+    height: 160,
+    width: 160,
+  },
+  inputs: [
+    handlesOptions.pcHandle,
+    handlesOptions.pwHandle
+
+  ],
+  outputs: [
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pcHandle,
+    handlesOptions.pwHandle
+    
+  ],
+};
+
+export const customNodes: ICustomNode[] = [customECS4708, customNode1, customNode2];

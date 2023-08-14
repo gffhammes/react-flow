@@ -38,12 +38,12 @@ export const CustomNodeContent = ({
       <Stack spacing={4}>
         <Typography>{name}</Typography>
 
-        <SelectInput
+        {/* <SelectInput
           label="Selecione"
           options={options}
           value={selectedValue}
           onChange={handleChange}
-        />
+        /> */}
       </Stack>
     </Box>
   );
