@@ -20,13 +20,13 @@ export const CustomNodeRightHandles = ({
     <Stack
       sx={{
         position: "absolute",
-        height: "70%",
+        height: "100%",
         width: "1rem",
         right: 0,
         transform: "translate(50%)",
-        top: "15%",
+        top: "5%",
       }}
-      justifyContent="space-between"
+      justifyContent="normal"
     >
       {rightHandles.map((handle, index) => (
         <CustomHandle
@@ -36,7 +36,7 @@ export const CustomNodeRightHandles = ({
           color={getConnectorColor(handle, selectedConnectors)}
           id={handle.name + "-" + index}
         />
-      ))}
+      ) )}
     </Stack>
   );
 };

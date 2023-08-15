@@ -13,7 +13,7 @@ export const Header = () => {
   );
 
   return (
-    <Paper sx={{ width: "100%", backgroundColor: "white", p: 4 }}>
+    <Paper sx={{ width: "100%", backgroundColor: "white", p: 0 }}>
       <CheckboxFormGroup
         label="Conexão"
         options={filterOptions}

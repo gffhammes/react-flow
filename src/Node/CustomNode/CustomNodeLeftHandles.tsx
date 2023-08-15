@@ -20,13 +20,13 @@ export const CustomNodeLeftHandles = ({
     <Stack
       sx={{
         position: "absolute",
-        height: "70%",
+        height: "100%",
         width: "1rem",
-        top: "15%",
+        top: "5%",
         left: 0,
         transform: "translate(-50%)",
       }}
-      justifyContent="space-between"
+      justifyContent="normal"
     >
       {leftHandles.map((handle, index) => (
         <CustomHandle
