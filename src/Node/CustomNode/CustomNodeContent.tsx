@@ -12,10 +12,14 @@ export const CustomNodeContent = ({
   shrinkMode = false,
   name,
 }: ICustomNodeContentProps) => {
-  const dimentionsToUse = dimentions ?? {
-    height: "fit-content",
-    width: "100%",
-  };
+  const dimentionsToUse =
+    dimentions ??
+    (shrinkMode
+      ? {
+          height: "fit-content",
+          width: "100%",
+        }
+      : undefined);
 
   return (
     <Box
