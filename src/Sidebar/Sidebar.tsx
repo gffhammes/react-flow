@@ -9,7 +9,11 @@ export const Sidebar = () => {
   };
 
   return (
-    <Paper elevation={10} component="aside" sx={{ p: 4 }}>
+    <Paper
+      elevation={10}
+      component="aside"
+      sx={{ p: 4, height: "100%", overflow: "auto" }}
+    >
       <Stack spacing={2}>
         {customNodes.map((customNode) => {
           return (
