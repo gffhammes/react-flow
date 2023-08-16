@@ -12,7 +12,7 @@ function App() {
     <div style={{ height: "100%" }}>
       <FlowContextProvider>
         <FilterContextProvider>
-          <Stack sx={{ height: "100%" }}>
+          <Stack sx={{ height: "100%", width: "100%" }}>
             <Header />
 
             <Stack
