@@ -6,6 +6,7 @@ export interface ITargetHandleProps {
   id: string;
   color: string;
   type: HandleType;
+  tooltip: string;
 }
 
 const connectionCommonProps: React.CSSProperties = {
@@ -22,6 +23,7 @@ export const CustomHandle = ({
   color,
   id,
   type,
+  tooltip,
 }: ITargetHandleProps) => {
   const { isValidConnection } = useFlowContext();
 
@@ -36,6 +38,7 @@ export const CustomHandle = ({
       position={type === "target" ? Position.Left : Position.Right}
       isConnectable={isConnectable}
       isValidConnection={isValidConnection}
+      title={tooltip}
     />
   );
 };

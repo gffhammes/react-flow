@@ -35,6 +35,7 @@ export const CustomNodeLeftHandles = ({
           isConnectable={isConnectable}
           color={getConnectorColor(handle, selectedConnectors)}
           id={handle.name + "-" + index}
+          tooltip={handle.name}
         />
       ))}
     </Stack>
