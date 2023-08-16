@@ -19,10 +19,7 @@ export const Sidebar = () => {
               draggable
             >
               <div id="custom-node">
-                <CustomNodeContent
-                  dimentions={customNode.dimentions}
-                  name={customNode.name}
-                />
+                <CustomNodeContent name={customNode.name} shrinkMode />
               </div>
             </div>
           );

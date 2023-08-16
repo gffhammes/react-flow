@@ -2,18 +2,25 @@ import { Box, Stack, Typography } from "@mui/material";
 import { IDimentions } from "../../interfaces";
 
 export interface ICustomNodeContentProps {
-  dimentions: IDimentions;
+  dimentions?: IDimentions;
+  shrinkMode?: boolean;
   name: string;
 }
 
 export const CustomNodeContent = ({
   dimentions,
+  shrinkMode = false,
   name,
 }: ICustomNodeContentProps) => {
+  const dimentionsToUse = dimentions ?? {
+    height: "fit-content",
+    width: "100%",
+  };
+
   return (
     <Box
       sx={{
-        ...dimentions,
+        ...dimentionsToUse,
         backgroundColor: "#f4f4f4",
         color: "black",
         px: 4,
