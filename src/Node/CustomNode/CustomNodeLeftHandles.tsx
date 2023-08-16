@@ -3,7 +3,6 @@ import { CustomHandle } from "../../Handles/CustomHandle";
 import { getConnectorColor } from "../../utils";
 import { useFilterContext } from "../../FilterContext/useFilterContext";
 import { ICustomNodeHandle } from "./interfaces";
-import uuid from "react-uuid";
 
 export interface ICustomNodeLeftHandlesProps {
   isConnectable: boolean;
