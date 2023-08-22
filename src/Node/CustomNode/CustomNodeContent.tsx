@@ -25,10 +25,10 @@ export const CustomNodeContent = ({
     <Box
       sx={{
         ...dimentionsToUse,
-        backgroundColor: "#f4f4f4",
+        backgroundColor: "#c0c0c0",
         color: "black",
-        px: 4,
-        py: 3,
+        px: 2,
+        py: 2,
       }}
     >
       <Stack spacing={4}>
