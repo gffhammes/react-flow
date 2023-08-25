@@ -3,7 +3,6 @@ import { CustomHandle } from "../../Handles/CustomHandle";
 import { getConnectorColor } from "../../utils";
 import { useFilterContext } from "../../FilterContext/useFilterContext";
 import { ICustomNodeHandle } from "./interfaces";
-import uuid from "react-uuid";
 
 export interface ICustomNodeLeftHandlesProps {
   isConnectable: boolean;
@@ -20,13 +19,13 @@ export const CustomNodeLeftHandles = ({
     <Stack
       sx={{
         position: "absolute",
-        height: "70%",
+        height: "100%",
         width: "1rem",
-        top: "15%",
+        top: "5%",
         left: 0,
         transform: "translate(-50%)",
       }}
-      justifyContent="space-between"
+      justifyContent="normal"
     >
       {leftHandles.map((handle, index) => (
         <CustomHandle
@@ -35,6 +34,7 @@ export const CustomNodeLeftHandles = ({
           isConnectable={isConnectable}
           color={getConnectorColor(handle, selectedConnectors)}
           id={handle.name + "-" + index}
+          tooltip={handle.name}
         />
       ))}
     </Stack>

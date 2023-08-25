@@ -1,49 +1,38 @@
 import { Box, Stack, Typography } from "@mui/material";
-import { ISelectOption, SelectInput } from "../../Form/SelectInput";
-import { useState } from "react";
 import { IDimentions } from "../../interfaces";
 
-const options: ISelectOption[] = [
-  {
-    label: "Cachorro",
-    value: 0,
-  },
-  {
-    label: "Gato",
-    value: 1,
-  },
-  {
-    label: "Papagaio",
-    value: 2,
-  },
-];
-
 export interface ICustomNodeContentProps {
-  dimentions: IDimentions;
+  dimentions?: IDimentions;
+  shrinkMode?: boolean;
   name: string;
 }
 
 export const CustomNodeContent = ({
   dimentions,
+  shrinkMode = false,
   name,
 }: ICustomNodeContentProps) => {
-  const [selectedValue, setSelectedValue] = useState(options[0]);
-
-  const handleChange = (newValue: ISelectOption) => {
-    setSelectedValue(newValue);
-  };
+  const dimentionsToUse =
+    dimentions ??
+    (shrinkMode
+      ? {
+          height: "fit-content",
+          width: "100%",
+        }
+      : undefined);
 
   return (
-    <Box sx={{ ...dimentions, backgroundColor: "#f4f4f4", px: 4, py: 3 }}>
+    <Box
+      sx={{
+        ...dimentionsToUse,
+        backgroundColor: "#f4f4f4",
+        color: "black",
+        px: 4,
+        py: 3,
+      }}
+    >
       <Stack spacing={4}>
         <Typography>{name}</Typography>
-
-        <SelectInput
-          label="Selecione"
-          options={options}
-          value={selectedValue}
-          onChange={handleChange}
-        />
       </Stack>
     </Box>
   );
