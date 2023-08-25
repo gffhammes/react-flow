@@ -112,6 +112,18 @@ const soHandle: IHandle = {
   color: "#646464",
   description: "SO",
 };
+const iHandle: IHandle = {
+  id: "140",
+  name: "I",
+  color: "#242424",
+  description: "I",
+};
+const oHandle: IHandle = {
+  id: "150",
+  name: "O",
+  color: "#646464",
+  description: "O",
+};
 export const handlesOptions = {
   pcHandle,
   pwHandle,
@@ -127,6 +139,8 @@ export const handlesOptions = {
   enpvHandle,
   siHandle,
   soHandle,
+  iHandle,
+  oHandle,
   blueHandle,
   redHandle,
   greenHandle,

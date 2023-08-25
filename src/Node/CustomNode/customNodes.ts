@@ -118,7 +118,66 @@ const customECS5022: ICustomNode = {
     handlesOptions.enHandle,
   ],
 };
-
+const customECS5054: ICustomNode = {
+  name: "ECS-5054",
+  dimentions: {
+    height: 160,
+    width: 110,
+  },
+  inputs: [
+    handlesOptions.dcuHandle,
+    // handlesOptions.enpvHandle,
+    handlesOptions.enHandle,
+  ],
+  outputs: [
+    handlesOptions.dcuHandle,
+    // handlesOptions.enpvHandle,
+    handlesOptions.enHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+  ],
+};
+const customECS5049: ICustomNode = {
+  name: "ECS-5049",
+  dimentions: {
+    height: 130,
+    width: 110,
+  },
+  inputs: [
+    handlesOptions.dcuHandle,
+    // handlesOptions.enpvHandle,
+    handlesOptions.enHandle,
+  ],
+  outputs: [
+    handlesOptions.dcuHandle,
+    // handlesOptions.enpvHandle,
+    handlesOptions.enHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+  ],
+};
+const customECS5063: ICustomNode = {
+  name: "ECS-5063",
+  dimentions: {
+    height: 60,
+    width: 110,
+  },
+  inputs: [
+  ],
+  outputs: [
+    handlesOptions.siHandle,
+    handlesOptions.siHandle,
+    handlesOptions.siHandle,
+  ],
+};
 const customWDSG16COMBOSPOT: ICustomNode = {
   name: "WDS-G16-COMBO_SPOT",
   dimentions: {
@@ -136,7 +195,6 @@ const customWDSG16COMBOSPOT: ICustomNode = {
   outputs: [
   ],
 };
-
 const customWDSG16CARRYSPOT: ICustomNode = {
   name: "WDS-G16-CARRY_SPOT",
   dimentions: {
@@ -351,6 +409,18 @@ const customBK: ICustomNode = {
     handlesOptions.enHandle,
   ],
 };
+const customStackLight03: ICustomNode = {
+  name: "SL 03",
+  dimentions: {
+    height: 50,
+    width: 50,
+  },
+  inputs: [
+    handlesOptions.dcuHandle,
+  ],
+  outputs: [
+  ],
+};
 const customSTA: ICustomNode = {
   name: "Station",
   dimentions: {
@@ -366,7 +436,7 @@ const customSTA: ICustomNode = {
   outputs: [
   ],
 };
-const customSW: ICustomNode = {
+const customSW12: ICustomNode = {
   name: "Switch12",
   dimentions: {
     height: 210,
@@ -391,12 +461,56 @@ const customSW: ICustomNode = {
     handlesOptions.enHandle,
   ],
 };
-
+const customSW28: ICustomNode = {
+  name: "Switch28",
+  dimentions: {
+    height: 490,
+    width: 100,
+  },
+  inputs: [
+    handlesOptions.hdcHandle,
+    handlesOptions.enHandle,
+  ],
+  outputs: [
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+    handlesOptions.enHandle,
+  ],
+};
 export const customNodes: ICustomNode[] = [
   customECS4708,
   customECS4710,
   customECS5022,
-  customSW,
+  customECS5049,
+  customECS5054,
+  customECS5063,
+  customSW12,
+  customSW28,
   customWDSG16COMBOSPOT,
   customWDSG16CARRYSPOT,
   customSTA,
