@@ -1,34 +1,6 @@
 import { handlesOptions } from "../../Handles/handles";
 import { ICustomNode } from "./interfaces";
 
-const customNode1: ICustomNode = {
-  name: "customNode1",
-  dimentions: {
-    height: 160,
-    width: 160,
-  },
-  inputs: [
-    handlesOptions.blueHandle,
-    handlesOptions.greenHandle,
-    handlesOptions.redHandle,
-  ],
-  outputs: [
-    handlesOptions.blueHandle,
-    handlesOptions.greenHandle,
-    handlesOptions.redHandle,
-  ],
-};
-
-const customNode2: ICustomNode = {
-  name: "customNode2",
-  dimentions: {
-    height: 160,
-    width: 160,
-  },
-  inputs: [handlesOptions.redHandle,handlesOptions.pcHandle,],
-  outputs: [handlesOptions.redHandle, handlesOptions.redHandle,handlesOptions.pcHandle,],
-};
-
 const customECS4708: ICustomNode = {
   name: "ECS-4708",
   dimentions: {
@@ -410,17 +382,45 @@ const customBK: ICustomNode = {
   ],
 };
 const customStackLight03: ICustomNode = {
-  name: "SL 03",
+  name: "SL03",
   dimentions: {
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 70,
   },
   inputs: [
-    handlesOptions.dcuHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
   ],
   outputs: [
   ],
 };
+const customStackLight02: ICustomNode = {
+  name: "SL02",
+  dimentions: {
+    height: 50,
+    width: 70,
+  },
+  inputs: [
+    handlesOptions.oHandle,
+    handlesOptions.oHandle,
+  ],
+  outputs: [
+  ],
+};
+const customStackLight01: ICustomNode = {
+  name: "SL01",
+  dimentions: {
+    height: 40,
+    width: 70,
+  },
+  inputs: [
+    handlesOptions.oHandle,
+  ],
+  outputs: [
+  ],
+};
+
 const customSTA: ICustomNode = {
   name: "Station",
   dimentions: {
@@ -527,6 +527,7 @@ export const customNodes: ICustomNode[] = [
   customTDCU,
   customACAUX4000,
   customDCAUX4000,
-  customNode1,
-  customNode2
+  customStackLight01,
+  customStackLight02,
+  customStackLight03,
 ];
