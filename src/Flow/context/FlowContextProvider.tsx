@@ -130,10 +130,21 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     return isSameTypeHandles && !edgeAlreadyHasConnection;
   };
 
+  const exportFlow = useCallback(() => {
+    if (reactFlowInstance) {
+      const flow = reactFlowInstance.toObject();
+
+      console.log(flow);
+
+      // localStorage.setItem(flowKey, JSON.stringify(flow));
+    }
+  }, [reactFlowInstance]);
+
   const value: IFlowContextValue = {
     nodes,
     edges,
     reactFlowInstance,
+    exportFlow,
     setReactFlowInstance,
     onNodesChange,
     onEdgesChange,

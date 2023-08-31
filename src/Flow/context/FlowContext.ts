@@ -15,6 +15,7 @@ export interface IFlowContextValue {
   setReactFlowInstance: React.Dispatch<
     React.SetStateAction<ReactFlowInstance | undefined>
   >;
+  exportFlow: () => void;
   onNodesChange: (changes: NodeChange[]) => void;
   onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
@@ -28,6 +29,7 @@ const initialValues: IFlowContextValue = {
   edges: [],
   nodes: [],
   reactFlowInstance: undefined,
+  exportFlow: () => {},
   setReactFlowInstance: () => {},
   onNodesChange: () => {},
   onEdgesChange: () => {},
