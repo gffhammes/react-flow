@@ -87,6 +87,17 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
 
   const handleDeleteNode = (nodeId: string) => {
     setNodes((nodes) => nodes.filter((node) => node.id !== nodeId));
+
+    setEdges((edges) =>
+      edges.filter((edge) => {
+        const isSourceNode = edge.source === nodeId;
+        const isTargetNode = edge.target === nodeId;
+
+        const mustDeleteEdge = isSourceNode || isTargetNode;
+
+        return !mustDeleteEdge;
+      })
+    );
   };
 
   const isValidConnection = (connection: Connection) => {
