@@ -1,8 +1,8 @@
-import { Stack } from "@mui/material";
 import { CustomHandle } from "../../Handles/CustomHandle";
 import { getConnectorColor } from "../../utils";
 import { useFilterContext } from "../../FilterContext/useFilterContext";
 import { ICustomNodeHandle } from "./interfaces";
+import { CustomNodeHandleWrapper } from "./CustomNodeHandleWrapper";
 
 export interface ICustomNodeLeftHandlesProps {
   isConnectable: boolean;
@@ -16,17 +16,7 @@ export const CustomNodeLeftHandles = ({
   const { selectedConnectors } = useFilterContext();
 
   return (
-    <Stack
-      sx={{
-        position: "absolute",
-        height: "100%",
-        width: "1rem",
-        top: "5%",
-        left: 0,
-        transform: "translate(-50%)",
-      }}
-      justifyContent="normal"
-    >
+    <CustomNodeHandleWrapper variant="left">
       {leftHandles.map((handle, index) => (
         <CustomHandle
           type="target"
@@ -37,6 +27,6 @@ export const CustomNodeLeftHandles = ({
           tooltip={handle.name}
         />
       ))}
-    </Stack>
+    </CustomNodeHandleWrapper>
   );
 };

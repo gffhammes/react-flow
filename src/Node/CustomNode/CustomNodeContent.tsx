@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { IDimentions } from "../../interfaces";
+import { useMemo } from "react";
 
 export interface ICustomNodeContentProps {
   dimentions?: IDimentions;
@@ -12,14 +13,23 @@ export const CustomNodeContent = ({
   shrinkMode = false,
   name,
 }: ICustomNodeContentProps) => {
-  const dimentionsToUse =
-    dimentions ??
-    (shrinkMode
-      ? {
-          height: "fit-content",
-          width: "100%",
-        }
-      : undefined);
+  const dimentionsToUse = useMemo(() => {
+    if (dimentions) {
+      return {
+        width: dimentions.width,
+        height: "100%",
+      };
+    }
+
+    if (shrinkMode) {
+      return {
+        height: "fit-content",
+        width: "100%",
+      };
+    }
+
+    return undefined;
+  }, []);
 
   return (
     <Box
