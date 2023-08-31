@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, DragEventHandler } from "react";
+import { useCallback, useRef, DragEventHandler } from "react";
 import ReactFlow, {
   Controls,
   Background,
@@ -12,11 +12,12 @@ import { edgeTypes, nodeTypes } from "./context/FlowContextProvider";
 import { EdgeContextMenu, IEdgeContextMenuRef } from "../Edge/EdgeContextMenu";
 
 export const Flow = () => {
-  const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
   const reactFlowWrapper = useRef<any>(null);
   const {
     edges,
     nodes,
+    reactFlowInstance,
+    setReactFlowInstance,
     onConnect,
     onEdgesChange,
     onNodesChange,
@@ -41,7 +42,9 @@ export const Flow = () => {
         return;
       }
 
-      const position = reactFlowInstance?.project({
+      if (!reactFlowInstance) return;
+
+      const position = reactFlowInstance.project({
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });

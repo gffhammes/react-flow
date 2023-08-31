@@ -7,6 +7,7 @@ import {
   Node,
   NodeChange,
   NodeTypes,
+  ReactFlowInstance,
   ReactFlowProvider,
   addEdge,
   applyEdgeChanges,
@@ -49,6 +50,8 @@ const initialEdges: Edge[] = [];
 export const FlowContextProvider = ({ children }: PropsWithChildren) => {
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
   const [edges, setEdges] = useState<Edge[]>(initialEdges);
+  const [reactFlowInstance, setReactFlowInstance] =
+    useState<ReactFlowInstance>();
 
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
@@ -130,6 +133,8 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
   const value: IFlowContextValue = {
     nodes,
     edges,
+    reactFlowInstance,
+    setReactFlowInstance,
     onNodesChange,
     onEdgesChange,
     onConnect,

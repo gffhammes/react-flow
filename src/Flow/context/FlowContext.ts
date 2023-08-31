@@ -1,9 +1,20 @@
 import { createContext } from "react";
-import { Connection, Edge, EdgeChange, Node, NodeChange } from "reactflow";
+import {
+  Connection,
+  Edge,
+  EdgeChange,
+  Node,
+  NodeChange,
+  ReactFlowInstance,
+} from "reactflow";
 
 export interface IFlowContextValue {
   nodes: Node[];
   edges: Edge[];
+  reactFlowInstance: ReactFlowInstance | undefined;
+  setReactFlowInstance: React.Dispatch<
+    React.SetStateAction<ReactFlowInstance | undefined>
+  >;
   onNodesChange: (changes: NodeChange[]) => void;
   onEdgesChange: (changes: EdgeChange[]) => void;
   onConnect: (connection: Connection) => void;
@@ -16,6 +27,8 @@ export interface IFlowContextValue {
 const initialValues: IFlowContextValue = {
   edges: [],
   nodes: [],
+  reactFlowInstance: undefined,
+  setReactFlowInstance: () => {},
   onNodesChange: () => {},
   onEdgesChange: () => {},
   onConnect: () => {},
