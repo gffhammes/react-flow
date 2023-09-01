@@ -8,6 +8,7 @@ import {
   NodeChange,
   NodeTypes,
   ReactFlowInstance,
+  ReactFlowJsonObject,
   ReactFlowProvider,
   addEdge,
   applyEdgeChanges,
@@ -130,13 +131,27 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     return isSameTypeHandles && !edgeAlreadyHasConnection;
   };
 
+  const importFlow = useCallback((flow: ReactFlowJsonObject) => {
+    if (flow) {
+      const { x = 0, y = 0, zoom = 1 } = flow.viewport;
+      setNodes(flow.nodes || []);
+      setEdges(flow.edges || []);
+      reactFlowInstance?.setViewport({ x, y, zoom });
+    }
+  }, []);
+
   const exportFlow = useCallback(() => {
     if (reactFlowInstance) {
       const flow = reactFlowInstance.toObject();
 
-      console.log(flow);
+      const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+        JSON.stringify(flow)
+      )}`;
+      const link = document.createElement("a");
+      link.href = jsonString;
+      link.download = "data.json";
 
-      // localStorage.setItem(flowKey, JSON.stringify(flow));
+      link.click();
     }
   }, [reactFlowInstance]);
 
@@ -144,6 +159,7 @@ export const FlowContextProvider = ({ children }: PropsWithChildren) => {
     nodes,
     edges,
     reactFlowInstance,
+    importFlow,
     exportFlow,
     setReactFlowInstance,
     onNodesChange,

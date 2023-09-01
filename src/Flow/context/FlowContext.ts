@@ -6,6 +6,7 @@ import {
   Node,
   NodeChange,
   ReactFlowInstance,
+  ReactFlowJsonObject,
 } from "reactflow";
 
 export interface IFlowContextValue {
@@ -15,6 +16,7 @@ export interface IFlowContextValue {
   setReactFlowInstance: React.Dispatch<
     React.SetStateAction<ReactFlowInstance | undefined>
   >;
+  importFlow: (flow: ReactFlowJsonObject) => void;
   exportFlow: () => void;
   onNodesChange: (changes: NodeChange[]) => void;
   onEdgesChange: (changes: EdgeChange[]) => void;
@@ -29,6 +31,7 @@ const initialValues: IFlowContextValue = {
   edges: [],
   nodes: [],
   reactFlowInstance: undefined,
+  importFlow: () => {},
   exportFlow: () => {},
   setReactFlowInstance: () => {},
   onNodesChange: () => {},

@@ -10,7 +10,8 @@ export const Sidebar = () => {
 
   return (
     <Paper
-      elevation={10}
+      variant="outlined"
+      square
       component="aside"
       sx={{ p: 4, height: "100%", overflow: "auto" }}
     >

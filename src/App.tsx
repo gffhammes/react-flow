@@ -19,9 +19,9 @@ function App() {
               direction="row"
               sx={{ width: "100%", height: "100%", overflow: "hidden" }}
             >
-              <Flow />
-
               <Sidebar />
+
+              <Flow />
             </Stack>
           </Stack>
         </FilterContextProvider>
