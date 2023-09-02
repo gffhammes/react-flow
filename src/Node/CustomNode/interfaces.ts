@@ -7,4 +7,5 @@ export interface ICustomNode {
   inputs: ICustomNodeHandle[];
   outputs: ICustomNodeHandle[];
   dimentions: IDimentions;
+  description:string;
 }
