@@ -6,12 +6,14 @@ export interface ICustomNodeContentProps {
   dimentions?: IDimentions;
   shrinkMode?: boolean;
   name: string;
+  tooltip: string;
 }
 
 export const CustomNodeContent = ({
   dimentions,
   shrinkMode = false,
   name,
+  tooltip,
 }: ICustomNodeContentProps) => {
   const dimentionsToUse = useMemo(() => {
     if (dimentions) {
@@ -40,7 +42,7 @@ export const CustomNodeContent = ({
         px: 2,
         py: 2,
       }}
-    >
+    > 
       <Stack spacing={4}>
         <Typography>{name}</Typography>
       </Stack>
