@@ -1,142 +1,178 @@
 import { IHandle } from "../interfaces";
 
-const blueHandle: IHandle = {
-  id: "1",
-  name: "Azul",
-  color: "#1900ff",
-  description: "AZ",
-};
-
-const redHandle: IHandle = {
-  id: "2",
-  name: "Vermelho",
-  color: "#ec0b0b",
-  description: "VM",
-};
-
-const greenHandle: IHandle = {
-  id: "3",
-  name: "Verde",
-  color: "#16e70f",
-  description: "Vd",
-};
-
-const purpleHandle: IHandle = {
-  id: "4",
-  name: "Roxo",
-  color: "#8900e4",
-  description: "Rx",
-};
-
-const pcHandle: IHandle = {
+const pcHandle: IHandle<"rede"> = {
   id: "5",
   name: "PC_PowerControl",
   color: "#000000",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "PC",
 };
 
-const pwHandle: IHandle = {
+const pwHandle: IHandle<"rede"> = {
   id: "25",
   name: "PW_PowerWeld",
   color: "#946306",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "PW",
 };
 
-const pwm35Handle: IHandle = {
+const pwm35Handle: IHandle<"rede"> = {
   id: "30",
   name: "PCM35_PowerControl",
   color: "#8C8C8C",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "PCM35",
 };
 
-const hacHandle: IHandle = {
+const hacHandle: IHandle<"rede"> = {
   id: "40",
   name: "HAC_Hot120VAC",
   color: "#FE9601",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "HAC",
 };
 
-const acHandle: IHandle = {
+const acHandle: IHandle<"rede"> = {
   id: "50",
   name: "AC_Control120VAC",
   color: "#FC0201",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "AC",
 };
 
-const hdcHandle: IHandle = {
+const hdcHandle: IHandle<"rede"> = {
   id: "60",
   name: "HDC_Hot",
   color: "#FFC85A",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "HDC",
 };
 
-const dcuHandle: IHandle = {
+const dcuHandle: IHandle<"rede"> = {
   id: "70",
   name: "DC_Unswitched",
   color: "#0100FE",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "DCu",
 };
 
-const dcsHandle: IHandle = {
+const dcsHandle: IHandle<"rede"> = {
   id: "80",
   name: "DC_Switched",
   color: "#C80194",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "DCs",
 };
 
-const dnHandle: IHandle = {
+const dnHandle: IHandle<"rede"> = {
   id: "90",
   name: "DNet",
   color: "#FFEE13",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "DN",
 };
 
-const enHandle: IHandle = {
+const enHandle: IHandle<"rede"> = {
   id: "100",
   name: "ENet",
   color: "#00FF04",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "EN",
 };
 
-const enpbHandle: IHandle = {
+const enpbHandle: IHandle<"rede"> = {
   id: "100",
   name: "ENet_Publ",
   color: "#00FF04",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "ENpb",
 };
 
-const enpvHandle: IHandle = {
+const enpvHandle: IHandle<"rede"> = {
   id: "110",
   name: "ENet_Priv",
   color: "#30946C",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "ENpv",
 };
 
-const siHandle: IHandle = {
+const siHandle: IHandle<"rede"> = {
   id: "120",
   name: "SI",
   color: "#242424",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "SI",
 };
 
-const soHandle: IHandle = {
+const soHandle: IHandle<"rede"> = {
   id: "130",
   name: "SO",
   color: "#646464",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "SO",
 };
 
-const iHandle: IHandle = {
+const iHandle: IHandle<"rede"> = {
   id: "140",
   name: "I",
   color: "#242424",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "I",
 };
 
-const oHandle: IHandle = {
+const oHandle: IHandle<"rede"> = {
   id: "150",
   name: "O",
   color: "#646464",
+  class: "rede",
+  classProps: {
+    tipo: "ENET",
+  },
   description: "O",
 };
 
@@ -157,8 +193,4 @@ export const handlesOptions = {
   soHandle,
   iHandle,
   oHandle,
-  blueHandle,
-  redHandle,
-  greenHandle,
-  purpleHandle,
 };
