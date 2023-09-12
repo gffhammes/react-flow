@@ -24,7 +24,6 @@ export const CustomNode = memo(
           <CustomNodeContent
             dimentions={nodeData.dimentions}
             name={nodeData.name}
-            tooltip={nodeData.description}
           />
 
           <CustomNodeRightHandles
