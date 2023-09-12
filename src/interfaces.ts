@@ -23,7 +23,7 @@ export type TClassProps<Class> = Class extends "energia"
   ? IHandleClassSinal
   : never;
 
-export interface IHandle<T extends THandleClass> {
+export interface IHandle<T> {
   id: string;
   name: string;
   color: string;
