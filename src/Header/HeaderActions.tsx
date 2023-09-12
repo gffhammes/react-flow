@@ -3,7 +3,6 @@ import { useFlowContext } from "../Flow/context/useFlowContext";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { ReactFlowJsonObject } from "reactflow";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 export const HeaderActions = () => {
   const { importFlow, exportFlow } = useFlowContext();
@@ -25,14 +24,11 @@ export const HeaderActions = () => {
 
   return (
     <Stack direction="row" spacing={2}>
-      <Button startIcon={<FilterAltIcon />}>filtros</Button>
-
       <Button
         variant="outlined"
         component="label"
         role={undefined}
         startIcon={<FileUploadIcon />}
-        tabIndex={-1}
       >
         Importar
         <VisuallyHiddenInput type="file" onChange={changeHandler} />

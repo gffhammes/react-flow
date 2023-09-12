@@ -1,10 +1,10 @@
 import { ISelectOption } from "./Form/SelectInput";
-import { IHandle, THandleClass } from "./interfaces";
+import { IHandle } from "./interfaces";
 
 export const disabledGrey = "#e3e3e3";
 
-export const getConnectorColor = <T extends THandleClass>(
-  handle: IHandle<T>,
+export const getConnectorColor = (
+  handle: IHandle,
   filteredConnectors: ISelectOption[]
 ) => {
   const isSelected = !!filteredConnectors.find(
