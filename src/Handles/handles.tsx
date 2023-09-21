@@ -77,13 +77,13 @@ const dcuHandle: IHandle<"rede"> = {
   description: "DCu",
 };
 
-const dcsHandle: IHandle<"rede"> = {
+const dcsHandle: IHandle<"energia"> = {
   id: "80",
   name: "DC_Switched",
   color: "#C80194",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 110,
   },
   description: "DCs",
 };
@@ -99,35 +99,35 @@ const dnHandle: IHandle<"rede"> = {
   description: "DN",
 };
 
-const enHandle: IHandle<"rede"> = {
+const enHandle: IHandle<"sinal"> = {
   id: "100",
   name: "ENet",
   color: "#00FF04",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "I/O",
   },
   description: "EN",
 };
 
-const enpbHandle: IHandle<"rede"> = {
-  id: "100",
+const enpbHandle: IHandle<"sinal"> = {
+  id: "105",
   name: "ENet_Publ",
   color: "#00FF04",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "I/O",
   },
   description: "ENpb",
 };
 
-const enpvHandle: IHandle<"rede"> = {
+const enpvHandle: IHandle<"energia"> = {
   id: "110",
   name: "ENet_Priv",
   color: "#30946C",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 110,
   },
   description: "ENpv",
 };
