@@ -26,15 +26,18 @@ export const ButtonEdge = ({
 
   const handleType = getHandleType(targetHandleId ?? "");
 
-  const isFiltered = !!selectedConnectors.find((connectorId) => {
-    const connector = handlesOptionsArray.find(
-      (option) => option.id === connectorId
-    );
+  const isFiltered =
+    selectedConnectors.length === 0
+      ? true
+      : !!selectedConnectors.find((connectorId) => {
+          const connector = handlesOptionsArray.find(
+            (option) => option.id === connectorId
+          );
 
-    const isFiltered = connector?.name === handleType;
+          const isFiltered = connector?.name === handleType;
 
-    return isFiltered;
-  });
+          return isFiltered;
+        });
 
   const handleObject = Object.values(handlesOptions).find((option) => {
     return option.name === handleType;

@@ -6,9 +6,10 @@ export const getConnectorColor = <T extends THandleClass>(
   handle: IHandle<T>,
   filteredConnectors: string[]
 ) => {
-  const isSelected = !!filteredConnectors.find(
-    (connector) => connector === handle.id
-  );
+  const isSelected =
+    filteredConnectors.length === 0
+      ? true
+      : !!filteredConnectors.find((connector) => connector === handle.id);
 
   if (isSelected) return handle.color;
 
