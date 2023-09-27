@@ -1,15 +1,14 @@
 import { Box, Typography } from "@mui/material";
-import { handlesOptions } from "../Handles/handles";
+import { handlesOptionsArray } from "../Handles/handles";
 import { IHandle, THandleClass } from "../interfaces";
-import { useState } from "react";
 import { CheckboxGroupsWithParents } from "../Form/CheckboxGroupsWithParents";
+import { useFilterContext } from "../FilterContext/useFilterContext";
 
 export interface IHandleFilterContentProps {}
 
 export const HandleFilterContent = () => {
-  const [selectedHadles, setSelectedHandles] = useState<string[]>([]);
-
-  const handlesOptionsArray = Array.from(Object.values(handlesOptions));
+  const { selectedConnectors, handleSelectedConnectorsChange } =
+    useFilterContext();
 
   const groups: IHandleGroup[] = [];
 
@@ -39,8 +38,8 @@ export const HandleFilterContent = () => {
           getOptionValue: (option) => option.id,
           label: group.groupLabel,
         }))}
-        selectedOptions={selectedHadles}
-        handleChange={(newValues) => setSelectedHandles(newValues)}
+        selectedOptions={selectedConnectors}
+        handleChange={handleSelectedConnectorsChange}
       />
     </Box>
   );

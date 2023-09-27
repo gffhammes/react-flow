@@ -194,3 +194,5 @@ export const handlesOptions = {
   iHandle,
   oHandle,
 };
+
+export const handlesOptionsArray = Array.from(Object.values(handlesOptions));
