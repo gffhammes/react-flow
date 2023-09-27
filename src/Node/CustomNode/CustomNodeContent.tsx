@@ -1,17 +1,20 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { IDimentions } from "../../interfaces";
 import { useMemo } from "react";
+import { disabledGrey } from "../../utils";
 
 export interface ICustomNodeContentProps {
   dimentions?: IDimentions;
   shrinkMode?: boolean;
   name: string;
+  isActive?: boolean;
 }
 
 export const CustomNodeContent = ({
   dimentions,
   shrinkMode = false,
   name,
+  isActive,
 }: ICustomNodeContentProps) => {
   const dimentionsToUse = useMemo(() => {
     if (dimentions) {
@@ -35,14 +38,14 @@ export const CustomNodeContent = ({
     <Box
       sx={{
         ...dimentionsToUse,
-        backgroundColor: "#c0c0c0",
+        backgroundColor: isActive ? "#8d8d8d" : disabledGrey,
         color: "black",
         px: 2,
         py: 2,
       }}
     >
       <Stack spacing={4}>
-        <Typography>{name}</Typography>
+        <Typography color={isActive ? "unset" : "grey"}>{name}</Typography>
       </Stack>
     </Box>
   );
