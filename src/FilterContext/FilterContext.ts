@@ -1,12 +1,8 @@
 import { createContext } from "react";
-import { ISelectOption } from "../Form/SelectInput";
 
 export interface IFilterContextValue {
-  selectedConnectors: ISelectOption[];
-  handleSelectedConnectorsChange: (
-    connector: ISelectOption,
-    checked: boolean
-  ) => void;
+  selectedConnectors: string[];
+  handleSelectedConnectorsChange: (newValue: string[]) => void;
 }
 
 const initialValue: IFilterContextValue = {

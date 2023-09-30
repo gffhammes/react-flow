@@ -1,5 +1,5 @@
 import { BaseEdge, EdgeProps, getSmoothStepPath } from "reactflow";
-import { handlesOptions } from "../Handles/handles";
+import { handlesOptions, handlesOptionsArray } from "../Handles/handles";
 import { useFilterContext } from "../FilterContext/useFilterContext";
 import { disabledGrey, getHandleType } from "../utils";
 
@@ -22,15 +22,25 @@ export const ButtonEdge = ({
     targetY,
     targetPosition,
   });
-
   const { selectedConnectors } = useFilterContext();
 
-  const isFiltered = !!selectedConnectors.find(
-    (connector) => connector.label === getHandleType(targetHandleId ?? "")
-  );
+  const handleType = getHandleType(targetHandleId ?? "");
+
+  const isFiltered =
+    selectedConnectors.length === 0
+      ? true
+      : !!selectedConnectors.find((connectorId) => {
+          const connector = handlesOptionsArray.find(
+            (option) => option.id === connectorId
+          );
+
+          const isFiltered = connector?.name === handleType;
+
+          return isFiltered;
+        });
 
   const handleObject = Object.values(handlesOptions).find((option) => {
-    return option.name === getHandleType(targetHandleId ?? "");
+    return option.name === handleType;
   });
 
   return (

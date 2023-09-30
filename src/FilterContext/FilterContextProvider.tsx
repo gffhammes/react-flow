@@ -1,26 +1,11 @@
 import { PropsWithChildren, useState } from "react";
 import { FilterContext, IFilterContextValue } from "./FilterContext";
-import { ISelectOption } from "../Form/SelectInput";
-import { filterOptions } from "../Flow/context/FlowContextProvider";
 
 export const FilterContextProvider = ({ children }: PropsWithChildren) => {
-  const [selectedConnectors, setSelectedConnectors] =
-    useState<ISelectOption[]>(filterOptions);
+  const [selectedConnectors, setSelectedConnectors] = useState<string[]>([]);
 
-  const handleSelectedConnectorsChange = (
-    connector: ISelectOption,
-    checked: boolean
-  ) => {
-    setSelectedConnectors((selectedConnectors) => {
-      if (!checked) {
-        return selectedConnectors.filter(
-          (selectedConnector) => selectedConnector.value !== connector.value
-        );
-      }
-
-      return [...selectedConnectors, connector];
-    });
-  };
+  const handleSelectedConnectorsChange = (newValue: string[]) =>
+    setSelectedConnectors(newValue);
 
   const value: IFilterContextValue = {
     selectedConnectors,
