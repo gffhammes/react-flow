@@ -1,78 +1,78 @@
 import { IHandle } from "../interfaces";
 
-const pcHandle: IHandle<"rede"> = {
+const pcHandle: IHandle<"energia"> = {
   id: "5",
   name: "PC_PowerControl",
   color: "#000000",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 440,
   },
   description: "PC",
 };
 
-const pwHandle: IHandle<"rede"> = {
+const pwHandle: IHandle<"energia"> = {
   id: "25",
   name: "PW_PowerWeld",
   color: "#946306",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 440,
   },
   description: "PW",
 };
 
-const pwm35Handle: IHandle<"rede"> = {
+const pwm35Handle: IHandle<"energia"> = {
   id: "30",
   name: "PCM35_PowerControl",
   color: "#8C8C8C",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 440,
   },
   description: "PCM35",
 };
 
-const hacHandle: IHandle<"rede"> = {
+const hacHandle: IHandle<"energia"> = {
   id: "40",
   name: "HAC_Hot120VAC",
   color: "#FE9601",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 120,
   },
   description: "HAC",
 };
 
-const acHandle: IHandle<"rede"> = {
+const acHandle: IHandle<"energia"> = {
   id: "50",
   name: "AC_Control120VAC",
   color: "#FC0201",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 120,
   },
   description: "AC",
 };
 
-const hdcHandle: IHandle<"rede"> = {
+const hdcHandle: IHandle<"energia"> = {
   id: "60",
   name: "HDC_Hot",
   color: "#FFC85A",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 24,
   },
   description: "HDC",
 };
 
-const dcuHandle: IHandle<"rede"> = {
+const dcuHandle: IHandle<"energia"> = {
   id: "70",
   name: "DC_Unswitched",
   color: "#0100FE",
-  class: "rede",
+  class: "energia",
   classProps: {
-    tipo: "ENET",
+    tensao: 24,
   },
   description: "DCu",
 };
@@ -99,79 +99,79 @@ const dnHandle: IHandle<"rede"> = {
   description: "DN",
 };
 
-const enHandle: IHandle<"sinal"> = {
+const enHandle: IHandle<"rede"> = {
   id: "100",
   name: "ENet",
   color: "#00FF04",
-  class: "sinal",
+  class: "rede",
   classProps: {
-    tipo: "I/O",
+    tipo: "ENET",
   },
   description: "EN",
 };
 
-const enpbHandle: IHandle<"sinal"> = {
+const enpbHandle: IHandle<"rede"> = {
   id: "105",
   name: "ENet_Publ",
   color: "#00FF04",
-  class: "sinal",
+  class: "rede",
   classProps: {
-    tipo: "I/O",
+    tipo: "ENET",
   },
   description: "ENpb",
 };
 
-const enpvHandle: IHandle<"energia"> = {
+const enpvHandle: IHandle<"rede"> = {
   id: "110",
   name: "ENet_Priv",
   color: "#30946C",
-  class: "energia",
+  class: "rede",
   classProps: {
-    tensao: 110,
+    tipo: "ENET",
   },
   description: "ENpv",
 };
 
-const siHandle: IHandle<"rede"> = {
+const siHandle: IHandle<"sinal"> = {
   id: "120",
   name: "SI",
   color: "#242424",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "SI/O",
   },
   description: "SI",
 };
 
-const soHandle: IHandle<"rede"> = {
+const soHandle: IHandle<"sinal"> = {
   id: "130",
   name: "SO",
   color: "#646464",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "SI/O",
   },
   description: "SO",
 };
 
-const iHandle: IHandle<"rede"> = {
+const iHandle: IHandle<"sinal"> = {
   id: "140",
   name: "I",
   color: "#242424",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "I/O",
   },
   description: "I",
 };
 
-const oHandle: IHandle<"rede"> = {
+const oHandle: IHandle<"sinal"> = {
   id: "150",
   name: "O",
   color: "#646464",
-  class: "rede",
+  class: "sinal",
   classProps: {
-    tipo: "ENET",
+    tipo: "I/O",
   },
   description: "O",
 };
